@@ -1,7 +1,8 @@
-package com.winterprojects.tvmazeapp.domainTest.dto
+package com.winterprojects.tvmazeapp.domainTest.shows.dto
 
 import com.winterprojects.tvmazeapp.domain.shows.dto.RatingDto
 import com.winterprojects.tvmazeapp.domain.shows.dto.toModel
+import com.winterprojects.tvmazeapp.domainTest.shows.MockShowDataHelper
 import org.junit.Assert
 import org.junit.Test
 
@@ -18,7 +19,7 @@ class RatingDtoTest {
         val ratingModel = ratingDto.toModel()
 
         //Assert
-        Assert.assertEquals(MockModelsHelper.ratingModel,  ratingModel)
+        Assert.assertEquals(MockShowDataHelper.ratingModel,  ratingModel)
 
     }
 }

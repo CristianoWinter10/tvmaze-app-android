@@ -1,7 +1,8 @@
-package com.winterprojects.tvmazeapp.domainTest.dto
+package com.winterprojects.tvmazeapp.domainTest.shows.dto
 
 import com.winterprojects.tvmazeapp.domain.shows.dto.ImageDto
 import com.winterprojects.tvmazeapp.domain.shows.dto.toModel
+import com.winterprojects.tvmazeapp.domainTest.shows.MockShowDataHelper
 import org.junit.Assert
 import org.junit.Test
 
@@ -20,7 +21,7 @@ class ImageDtoTest {
         val imageModel = imageDto.toModel()
 
         //Assert
-        Assert.assertEquals(MockModelsHelper.imageModel,  imageModel)
+        Assert.assertEquals(MockShowDataHelper.imageModel,  imageModel)
 
     }
 }

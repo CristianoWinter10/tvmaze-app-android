@@ -1,11 +1,11 @@
-package com.winterprojects.tvmazeapp.domainTest.dto
+package com.winterprojects.tvmazeapp.domainTest.shows
 
 import com.winterprojects.tvmazeapp.domain.shows.model.ImageModel
 import com.winterprojects.tvmazeapp.domain.shows.model.RatingModel
 import com.winterprojects.tvmazeapp.domain.shows.model.ShowModel
 import com.winterprojects.tvmazeapp.domain.shows.model.TvShowModel
 
-object MockModelsHelper {
+object MockShowDataHelper {
     val tvShowModel = TvShowModel(
         score = 8.5,
         show = ShowModel(

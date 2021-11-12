@@ -1,9 +1,10 @@
-package com.winterprojects.tvmazeapp.domainTest.dto
+package com.winterprojects.tvmazeapp.domainTest.shows.dto
 
 import com.winterprojects.tvmazeapp.domain.shows.dto.ImageDto
 import com.winterprojects.tvmazeapp.domain.shows.dto.RatingDto
 import com.winterprojects.tvmazeapp.domain.shows.dto.ShowDto
 import com.winterprojects.tvmazeapp.domain.shows.dto.toModel
+import com.winterprojects.tvmazeapp.domainTest.shows.MockShowDataHelper
 import org.junit.Assert
 import org.junit.Test
 
@@ -40,7 +41,7 @@ class ShowModelTest {
         val showModel = showDto.toModel()
 
         //Assert
-        Assert.assertEquals(MockModelsHelper.showModel, showModel)
+        Assert.assertEquals(MockShowDataHelper.showModel, showModel)
 
     }
 }

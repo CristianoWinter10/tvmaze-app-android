@@ -11,6 +11,6 @@ private const val BASE_URL = "search"
 interface ShowClientApi {
 
     @GET("$BASE_URL/shows")
-    suspend fun fetchShowByName(@Query("q") name: String): List<TvShowDto>
+    suspend fun fetchShowsByName(@Query("q") name: String): List<TvShowDto>
 
 }

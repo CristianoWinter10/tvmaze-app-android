@@ -1,5 +1,6 @@
 package com.winterprojects.tvmazeapp.common.di
 
+import com.winterprojects.tvmazeapp.business.di.BusinessDI
 import com.winterprojects.tvmazeapp.datasource.di.DatasourceDI
 import com.winterprojects.tvmazeapp.datasource.di.RemoteDI
 import com.winterprojects.tvmazeapp.datasource.di.RetrofitDI
@@ -9,6 +10,7 @@ object KoinModules {
     val applicationModules = listOf(
         DatasourceDI.module,
         RemoteDI.module,
-        RetrofitDI.module
+        RetrofitDI.module,
+        BusinessDI.module
     )
 }
