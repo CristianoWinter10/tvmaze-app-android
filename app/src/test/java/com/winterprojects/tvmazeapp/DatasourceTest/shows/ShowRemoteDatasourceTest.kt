@@ -1,19 +1,17 @@
-package com.winterprojects.tvmazeapp.domainTest.repositories
+package com.winterprojects.tvmazeapp.datasourceTest.shows
 
 import com.winterprojects.tvmazeapp.datasource.shows.ShowClientApi
 import com.winterprojects.tvmazeapp.datasource.shows.ShowRemoteDatasource
-import com.winterprojects.tvmazeapp.domainTest.BaseTest
+import com.winterprojects.tvmazeapp.BaseTest
 import kotlinx.coroutines.runBlocking
 import org.junit.Before
 import org.junit.Test
-import org.junit.runner.RunWith
 import org.koin.core.component.inject
 import org.koin.test.mock.declareMock
 import org.mockito.Mock
 import org.mockito.Mockito.*
-import org.mockito.junit.MockitoJUnitRunner
 
-class ShowRepositoryRemoteModuleTest : BaseTest() {
+class ShowRemoteDatasourceTest : BaseTest() {
     @Mock
     private lateinit var showClientApi: ShowClientApi
 
@@ -25,17 +23,17 @@ class ShowRepositoryRemoteModuleTest : BaseTest() {
     }
 
     @Test
-    fun `Should call Show Api Client`() {
+    fun `Should call fetchShowsByName method from Show Api Client`() {
         runBlocking {
 
             //Assert
-            `when`(showClientApi.fetchShowByName(anyString())).thenReturn(listOf())
+            `when`(showClientApi.fetchShowsByName(anyString())).thenReturn(listOf())
 
             //Act
             showRemoteDatasource.fetchShowsByName("")
 
             //Assert
-            verify(showClientApi, only()).fetchShowByName(anyString())
+            verify(showClientApi, only()).fetchShowsByName(anyString())
         }
     }
 }

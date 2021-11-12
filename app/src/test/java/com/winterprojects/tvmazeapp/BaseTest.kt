@@ -1,4 +1,4 @@
-package com.winterprojects.tvmazeapp.domainTest
+package com.winterprojects.tvmazeapp
 
 import com.winterprojects.tvmazeapp.common.di.KoinModules
 import org.junit.Rule

@@ -1,6 +1,7 @@
-package com.winterprojects.tvmazeapp.domainTest.dto
+package com.winterprojects.tvmazeapp.domainTest.shows.dto
 
 import com.winterprojects.tvmazeapp.domain.shows.dto.*
+import com.winterprojects.tvmazeapp.domainTest.shows.MockShowDataHelper
 import org.junit.Assert
 import org.junit.Test
 
@@ -40,7 +41,7 @@ class TvShowDtoTest {
         val tvShowModel = tvShowDto.toModel()
 
         //Assert
-        Assert.assertEquals(MockModelsHelper.tvShowModel, tvShowModel)
+        Assert.assertEquals(MockShowDataHelper.tvShowModel, tvShowModel)
 
     }
 }
