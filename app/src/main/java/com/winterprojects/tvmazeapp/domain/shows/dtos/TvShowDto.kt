@@ -1,6 +1,6 @@
-package com.winterprojects.tvmazeapp.domain.shows.dto
+package com.winterprojects.tvmazeapp.domain.shows.dtos
 
-import com.winterprojects.tvmazeapp.domain.shows.model.TvShowModel
+import com.winterprojects.tvmazeapp.domain.shows.models.TvShowModel
 
 data class TvShowDto(
     val score: Double?,

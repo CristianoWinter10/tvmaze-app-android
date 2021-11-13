@@ -2,7 +2,7 @@ package com.winterprojects.tvmazeapp.businessTest.shows
 
 import com.winterprojects.tvmazeapp.BaseTest
 import com.winterprojects.tvmazeapp.business.shows.FetchShowsUseCase
-import com.winterprojects.tvmazeapp.datasource.shows.ShowRepository
+import com.winterprojects.tvmazeapp.datasource.search.SearchRepository
 import kotlinx.coroutines.runBlocking
 import org.junit.Before
 import org.junit.Test
@@ -16,13 +16,13 @@ import org.mockito.Mockito.only
 class FetchShowsUseCaseTest : BaseTest() {
 
     @Mock
-    lateinit var showRepository: ShowRepository
+    lateinit var searchRepository: SearchRepository
 
     private val fetchShowsUseCase: FetchShowsUseCase by inject()
 
     @Before
     fun setup() {
-        showRepository = declareMock()
+        searchRepository = declareMock()
     }
 
     @Test
@@ -30,14 +30,14 @@ class FetchShowsUseCaseTest : BaseTest() {
         runBlocking {
 
             // Arrange
-            Mockito.`when`(showRepository.fetchShowsByName(Mockito.anyString()))
+            Mockito.`when`(searchRepository.fetchShowsByName(Mockito.anyString()))
                 .thenReturn(listOf())
 
             // Act
             fetchShowsUseCase(anyString())
 
             // Assert
-            Mockito.verify(showRepository, only()).fetchShowsByName(anyString())
+            Mockito.verify(searchRepository, only()).fetchShowsByName(anyString())
 
         }
     }

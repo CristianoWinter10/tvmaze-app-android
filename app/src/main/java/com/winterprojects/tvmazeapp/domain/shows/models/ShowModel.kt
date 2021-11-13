@@ -1,4 +1,4 @@
-package com.winterprojects.tvmazeapp.domain.shows.model
+package com.winterprojects.tvmazeapp.domain.shows.models
 
 data class ShowModel(
     val averageRuntime: Int?,
@@ -13,5 +13,6 @@ data class ShowModel(
     val rating: RatingModel?,
     val status: String?,
     val summary: String?,
-    val weight: Int?
+    val weight: Int?,
+    val _embedded: EmbeddedModel?
 )

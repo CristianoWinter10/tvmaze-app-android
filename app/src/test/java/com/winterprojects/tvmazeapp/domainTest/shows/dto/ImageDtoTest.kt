@@ -1,7 +1,7 @@
 package com.winterprojects.tvmazeapp.domainTest.shows.dto
 
-import com.winterprojects.tvmazeapp.domain.shows.dto.ImageDto
-import com.winterprojects.tvmazeapp.domain.shows.dto.toModel
+import com.winterprojects.tvmazeapp.domain.shows.dtos.ImageDto
+import com.winterprojects.tvmazeapp.domain.shows.dtos.toModel
 import com.winterprojects.tvmazeapp.domainTest.shows.MockShowDataHelper
 import org.junit.Assert
 import org.junit.Test

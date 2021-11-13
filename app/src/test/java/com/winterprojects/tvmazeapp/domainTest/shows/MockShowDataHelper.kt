@@ -1,9 +1,9 @@
 package com.winterprojects.tvmazeapp.domainTest.shows
 
-import com.winterprojects.tvmazeapp.domain.shows.model.ImageModel
-import com.winterprojects.tvmazeapp.domain.shows.model.RatingModel
-import com.winterprojects.tvmazeapp.domain.shows.model.ShowModel
-import com.winterprojects.tvmazeapp.domain.shows.model.TvShowModel
+import com.winterprojects.tvmazeapp.domain.shows.models.ImageModel
+import com.winterprojects.tvmazeapp.domain.shows.models.RatingModel
+import com.winterprojects.tvmazeapp.domain.shows.models.ShowModel
+import com.winterprojects.tvmazeapp.domain.shows.models.TvShowModel
 
 object MockShowDataHelper {
     val tvShowModel = TvShowModel(
@@ -29,7 +29,8 @@ object MockShowDataHelper {
             rating = RatingModel(average = 6.7),
             status = "Ended",
             summary = "Steven Matrix is a freelance hitman who will...",
-            weight = 0
+            weight = 0,
+            _embedded = null
         )
     )
 
@@ -55,7 +56,8 @@ object MockShowDataHelper {
         rating = RatingModel(average = 6.7),
         status = "Ended",
         summary = "As the grandmaster who founded...",
-        weight = 0
+        weight = 0,
+        _embedded = null
     )
 
     val ratingModel = RatingModel(

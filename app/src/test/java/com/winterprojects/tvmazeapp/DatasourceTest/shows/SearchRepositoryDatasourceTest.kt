@@ -1,8 +1,8 @@
 package com.winterprojects.tvmazeapp.datasourceTest.shows
 
 import com.winterprojects.tvmazeapp.BaseTest
-import com.winterprojects.tvmazeapp.datasource.shows.ShowRemoteDatasource
-import com.winterprojects.tvmazeapp.datasource.shows.ShowRepository
+import com.winterprojects.tvmazeapp.datasource.search.SearchRemoteDatasource
+import com.winterprojects.tvmazeapp.datasource.search.SearchRepository
 import kotlinx.coroutines.runBlocking
 import org.junit.Before
 import org.junit.Test
@@ -11,11 +11,11 @@ import org.koin.test.mock.declareMock
 import org.mockito.Mock
 import org.mockito.Mockito.*
 
-class ShowRepositoryDatasourceTest : BaseTest() {
+class SearchRepositoryDatasourceTest : BaseTest() {
     @Mock
-    private lateinit var showRemoteDatasource: ShowRemoteDatasource
+    private lateinit var showRemoteDatasource: SearchRemoteDatasource
 
-    private val showRepository: ShowRepository by inject()
+    private val searchRepository: SearchRepository by inject()
 
     @Before
     fun setup(){
@@ -30,7 +30,7 @@ class ShowRepositoryDatasourceTest : BaseTest() {
             `when`(showRemoteDatasource.fetchShowsByName(anyString())).thenReturn(listOf())
 
             //Act
-            showRepository.fetchShowsByName("")
+            searchRepository.fetchShowsByName("")
 
             //Assert
             verify(showRemoteDatasource, only()).fetchShowsByName(anyString())

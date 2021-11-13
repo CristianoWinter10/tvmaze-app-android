@@ -1,6 +1,6 @@
 package com.winterprojects.tvmazeapp.domainTest.shows.dto
 
-import com.winterprojects.tvmazeapp.domain.shows.dto.*
+import com.winterprojects.tvmazeapp.domain.shows.dtos.*
 import com.winterprojects.tvmazeapp.domainTest.shows.MockShowDataHelper
 import org.junit.Assert
 import org.junit.Test
@@ -33,7 +33,8 @@ class TvShowDtoTest {
                 rating = RatingDto(average = 6.7),
                 status = "Ended",
                 summary = "Steven Matrix is a freelance hitman who will...",
-                weight = 0
+                weight = 0,
+                _embedded = null
             )
         )
 

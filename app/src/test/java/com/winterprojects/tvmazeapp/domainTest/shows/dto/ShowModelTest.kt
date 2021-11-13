@@ -1,9 +1,9 @@
 package com.winterprojects.tvmazeapp.domainTest.shows.dto
 
-import com.winterprojects.tvmazeapp.domain.shows.dto.ImageDto
-import com.winterprojects.tvmazeapp.domain.shows.dto.RatingDto
-import com.winterprojects.tvmazeapp.domain.shows.dto.ShowDto
-import com.winterprojects.tvmazeapp.domain.shows.dto.toModel
+import com.winterprojects.tvmazeapp.domain.shows.dtos.ImageDto
+import com.winterprojects.tvmazeapp.domain.shows.dtos.RatingDto
+import com.winterprojects.tvmazeapp.domain.shows.dtos.ShowDto
+import com.winterprojects.tvmazeapp.domain.shows.dtos.toModel
 import com.winterprojects.tvmazeapp.domainTest.shows.MockShowDataHelper
 import org.junit.Assert
 import org.junit.Test
@@ -34,7 +34,8 @@ class ShowModelTest {
             rating = RatingDto(average = 6.7),
             status = "Ended",
             summary = "As the grandmaster who founded...",
-            weight = 0
+            weight = 0,
+            _embedded = null
         )
 
         //Act
