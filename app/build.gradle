@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
+    id 'kotlin-kapt'
 }
 
 android {
@@ -45,6 +46,11 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+
+    buildFeatures{
+        viewBinding true
+        dataBinding true
+    }
 }
 
 dependencies {
@@ -53,11 +59,14 @@ dependencies {
     implementation deps.android.appcompat
     implementation deps.google.material
     implementation deps.android.constraintlayout
+    implementation deps.android.legacy
+    implementation deps.android.navigation_fragment_ktx
+    implementation deps.android.navigation_ui_ktx
 
     testImplementation deps.kotlin.coroutines_test
 
-    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+    androidTestImplementation deps.android.test_ext
+    androidTestImplementation deps.android.test_espresso
 
     // Koin
     implementation deps.koin.core
