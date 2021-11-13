@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="TVmazeSearchView">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">@dimen/search_view_height</item>
+        <item name="android:layout_marginStart">@dimen/search_view_horizontal_margin</item>
+        <item name="android:layout_marginEnd">@dimen/search_view_horizontal_margin</item>
+        <item name="android:layout_marginTop">@dimen/search_view_vertical_margin</item>
+        <item name="android:layout_marginBottom">@dimen/search_view_vertical_margin</item>
+        <item name="android:background">@drawable/background_search_bar</item>
+        <item name="android:imeOptions">actionSearch</item>
+        <item name="android:inputType">textFilter</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:paddingStart">@dimen/search_view_horizontal_padding</item>
+        <item name="android:paddingEnd">@dimen/search_view_horizontal_padding</item>
+    </style>
+
+    <style name="show_item_body_text">
+        <item name="android:textColor">@color/default_text_color</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+</resources>
