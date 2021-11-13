@@ -1,8 +1,7 @@
 package com.winterprojects.tvmazeapp.datasourceTest.shows
 
-import com.winterprojects.tvmazeapp.datasource.shows.ShowClientApi
-import com.winterprojects.tvmazeapp.datasource.shows.ShowRemoteDatasource
 import com.winterprojects.tvmazeapp.BaseTest
+import com.winterprojects.tvmazeapp.datasource.shows.ShowRemoteDatasource
 import com.winterprojects.tvmazeapp.datasource.shows.ShowRepository
 import kotlinx.coroutines.runBlocking
 import org.junit.Before

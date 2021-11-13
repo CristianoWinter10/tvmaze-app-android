@@ -15,14 +15,10 @@
     <dimen name="show_item_poster_image_height">192dp</dimen>
     <dimen name="show_item_title_text_view_margin_horizontal">8dp</dimen>
     <dimen name="show_item_title_text_view_margin_top">16dp</dimen>
-    <dimen name="show_item_flow_score_horizontal_gap">12dp</dimen>
     <dimen name="show_item_genres_text_view_margin_bottom">8dp</dimen>
-    <dimen name="show_item_average_runtime_text_view_margin_top">8dp</dimen>
     <dimen name="show_item_average_runtime_text_view_margin_bottom">16dp</dimen>
     <dimen name="show_item_height">192dp</dimen>
-    <dimen name="show_item_flow_score_margin_top">8dp</dimen>
     <dimen name="search_view_default_radius">24dp</dimen>
     <dimen name="show_item_summary_text_view_margin_vertical">16dp</dimen>
     <dimen name="show_item_average_score_text_view_margin_end">8dp</dimen>
-    <dimen name="card_view_elevation_default">3dp</dimen>
 </resources>

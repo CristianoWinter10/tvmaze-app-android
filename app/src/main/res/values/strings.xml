@@ -2,5 +2,10 @@
     <string name="app_name">TVmaze App</string>
     <string name="title">Title</string>
     <string name="home">Home</string>
-    <string name="search">Search</string>
+    <string name="no_information">No information</string>
+    <plurals name="arg_minutes">
+        <item quantity="zero">%d minute</item>
+        <item quantity="one">%d minute</item>
+        <item quantity="other">%d minutes</item>
+    </plurals>
 </resources>

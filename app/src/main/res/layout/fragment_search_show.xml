@@ -7,11 +7,11 @@
     android:background="@color/background"
     tools:context=".presentation.search.SearchShowFragment">
 
-    <EditText
+    <androidx.appcompat.widget.SearchView
         android:id="@+id/searchViewShowTitle"
         style="@style/TVmazeSearchView"
-        android:hint="@string/title"
-        android:autofillHints="@string/title"
+        app:queryHint="@string/title"
+        app:iconifiedByDefault="false"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -25,6 +25,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/searchViewShowTitle"
-        tools:listitem="@layout/show_item_list" />
+        tools:listitem="@layout/show_item_list"
+        tools:itemCount="2"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

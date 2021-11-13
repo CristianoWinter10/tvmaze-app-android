@@ -70,6 +70,7 @@ dependencies {
 
     // Koin
     implementation deps.koin.core
+    implementation deps.koin.android
 
     testImplementation deps.koin.test
     testImplementation deps.koin.test_junit4
@@ -86,4 +87,6 @@ dependencies {
     // Mockito
     testImplementation deps.mockito
 
+    // Coil
+    implementation deps.coil
 }
