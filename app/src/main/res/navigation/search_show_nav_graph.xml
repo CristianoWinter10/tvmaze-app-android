@@ -9,5 +9,16 @@
         android:id="@+id/searchShowFragment"
         android:name="com.winterprojects.tvmazeapp.presentation.search.SearchShowFragment"
         android:label="fragment_search_show"
-        tools:layout="@layout/fragment_search_show" />
+        tools:layout="@layout/fragment_search_show" >
+        <action
+            android:id="@+id/action_searchShowFragment_to_showDetailsFragment"
+            app:destination="@id/showDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/showDetailsFragment"
+        android:name="com.winterprojects.tvmazeapp.presentation.showDetails.ShowDetailsFragment"
+        android:label="ShowDetailsFragment"
+        tools:layout="@layout/fragment_show_details"/>
+
+
 </navigation>

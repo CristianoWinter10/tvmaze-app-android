@@ -11,21 +11,25 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.winterprojects.tvmazeapp.R
+import com.winterprojects.tvmazeapp.common.helpers.OnItemClickListener
 import com.winterprojects.tvmazeapp.databinding.ShowItemListBinding
 import com.winterprojects.tvmazeapp.domain.shows.model.TvShowModel
 
-class ShowAdapter : ListAdapter<TvShowModel, ShowAdapter.ShowVideoHolder>(diffCallback) {
+class ShowAdapter(val itemClickListener: OnItemClickListener<TvShowModel>) : ListAdapter<TvShowModel, ShowAdapter.ShowVideoHolder>(diffCallback) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ShowVideoHolder {
         val binding =
             ShowItemListBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return ShowVideoHolder(binding)
+        return ShowVideoHolder(binding, itemClickListener)
     }
 
     override fun onBindViewHolder(holder: ShowVideoHolder, position: Int) {
         holder.bind(getItem(position))
     }
 
-    class ShowVideoHolder(private val binding: ShowItemListBinding) :
+    class ShowVideoHolder(
+        private val binding: ShowItemListBinding,
+        private val itemClickListener: OnItemClickListener<TvShowModel>
+    ) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(tvShowModel: TvShowModel) {
             with(tvShowModel) {
@@ -63,6 +67,9 @@ class ShowAdapter : ListAdapter<TvShowModel, ShowAdapter.ShowVideoHolder>(diffCa
 
             }
 
+            this.itemView.setOnClickListener {
+                itemClickListener.onItemClick(tvShowModel)
+            }
         }
 
         private fun getHandledSummaryHtmlText(it: String) =
@@ -92,5 +99,7 @@ class ShowAdapter : ListAdapter<TvShowModel, ShowAdapter.ShowVideoHolder>(diffCa
 
         }
     }
+
+
 }
 

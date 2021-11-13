@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/showDetailsAppBar"
+        android:layout_width="match_parent"
+        android:layout_height="244dp">
+
+        <com.google.android.material.appbar.CollapsingToolbarLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_scrollFlags="scroll|snap"
+            >
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                android:src="@drawable/ic_launcher_foreground"
+                tools:ignore="ContentDescription" />
+
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        app:layout_anchor="@id/showDetailsAppBar"
+        app:layout_anchorGravity="bottom"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="16dp">
+
+            <TextView
+                android:id="@+id/textViewShowDetailsTitle"
+                style="@style/TVmaze.Title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="Show's Title" />
+
+            <TextView
+                android:id="@+id/textViewShowDetailsSummary"
+                style="@style/TVmaze.Text"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textStyle="italic"
+                android:layout_marginTop="@dimen/default_margin_16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/textViewShowDetailsTitle"
+                tools:text="The town's inhabitants must deal with surviving the post-apocalyptic conditions while searching for answers about the dome, where it came from and if and when it will go away." />
+
+            <RatingBar
+                android:id="@+id/ratingBarShowDetailsRating"
+                style="@style/Widget.AppCompat.RatingBar.Small"
+                android:progressTint="@color/show_item_rating_bar_color"
+                android:secondaryProgressTint="@color/show_item_rating_bar_color"
+                android:progressBackgroundTint="@color/cardview_light_background"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:numStars="10"
+                android:rating="8.2"
+                android:layout_marginTop="@dimen/default_margin_16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/textViewShowDetailsSummary" />
+
+            <TextView
+                android:id="@+id/textViewShowDetailsRating"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/TVmaze.TextRating"
+                android:layout_marginStart="@dimen/default_margin_8dp"
+                app:layout_constraintBottom_toBottomOf="@id/ratingBarShowDetailsRating"
+                app:layout_constraintStart_toEndOf="@id/ratingBarShowDetailsRating"
+                app:layout_constraintTop_toTopOf="@id/ratingBarShowDetailsRating"
+                tools:text="8.2"/>
+
+            <TextView
+                android:id="@+id/textViewShowDetailsGenres"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                style="@style/TVmaze.Text"
+                android:layout_marginTop="@dimen/default_margin_8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/ratingBarShowDetailsRating"
+                tools:text="Adventure, Action"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
