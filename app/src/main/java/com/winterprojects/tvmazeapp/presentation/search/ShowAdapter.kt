@@ -13,7 +13,7 @@ import coil.load
 import com.winterprojects.tvmazeapp.R
 import com.winterprojects.tvmazeapp.common.helpers.OnItemClickListener
 import com.winterprojects.tvmazeapp.databinding.ShowItemListBinding
-import com.winterprojects.tvmazeapp.domain.shows.model.TvShowModel
+import com.winterprojects.tvmazeapp.domain.shows.models.TvShowModel
 
 class ShowAdapter(val itemClickListener: OnItemClickListener<TvShowModel>) : ListAdapter<TvShowModel, ShowAdapter.ShowVideoHolder>(diffCallback) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ShowVideoHolder {

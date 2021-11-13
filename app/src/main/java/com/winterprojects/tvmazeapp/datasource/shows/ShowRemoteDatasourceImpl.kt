@@ -1,12 +1,19 @@
 package com.winterprojects.tvmazeapp.datasource.shows
 
-import com.winterprojects.tvmazeapp.domain.shows.dto.toModel
-import com.winterprojects.tvmazeapp.domain.shows.model.TvShowModel
+import com.winterprojects.tvmazeapp.domain.shows.dtos.toModel
+import com.winterprojects.tvmazeapp.domain.shows.models.ShowModel
+import com.winterprojects.tvmazeapp.domain.shows.models.TvShowModel
 
 class ShowRemoteDatasourceImpl(private val showClientApi: ShowClientApi) : ShowRemoteDatasource {
-    override suspend fun fetchShowsByName(name: String): List<TvShowModel> {
-        return showClientApi.fetchShowsByName(name).map { tvShowDto ->
-            tvShowDto.toModel()
+    override suspend fun fetchCastByShowId(showId: Int): List<ShowModel> {
+        return showClientApi.fetchCastByShowId(showId).map { show ->
+            show.toModel()
+        }
+    }
+
+    override suspend fun fetchEpisodesByShowId(showId: Int): List<ShowModel> {
+        return showClientApi.fetchCastByShowId(showId).map { show ->
+            show.toModel()
         }
     }
 }

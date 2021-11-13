@@ -6,7 +6,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.winterprojects.tvmazeapp.business.shows.FetchShowsUseCase
 import com.winterprojects.tvmazeapp.domain.helpers.ResultState
-import com.winterprojects.tvmazeapp.domain.shows.model.TvShowModel
+import com.winterprojects.tvmazeapp.domain.shows.models.TvShowModel
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch

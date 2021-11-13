@@ -13,7 +13,7 @@ import com.winterprojects.tvmazeapp.common.helpers.SearchableQueryTextListener
 import com.winterprojects.tvmazeapp.common.helpers.hideSoftKeyboard
 import com.winterprojects.tvmazeapp.databinding.FragmentSearchShowBinding
 import com.winterprojects.tvmazeapp.domain.helpers.ResultState
-import com.winterprojects.tvmazeapp.domain.shows.model.TvShowModel
+import com.winterprojects.tvmazeapp.domain.shows.models.TvShowModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 

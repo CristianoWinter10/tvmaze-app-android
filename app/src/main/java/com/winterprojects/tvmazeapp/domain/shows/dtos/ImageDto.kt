@@ -1,6 +1,6 @@
-package com.winterprojects.tvmazeapp.domain.shows.dto
+package com.winterprojects.tvmazeapp.domain.shows.dtos
 
-import com.winterprojects.tvmazeapp.domain.shows.model.ImageModel
+import com.winterprojects.tvmazeapp.domain.shows.models.ImageModel
 
 data class ImageDto(
     val medium: String?,

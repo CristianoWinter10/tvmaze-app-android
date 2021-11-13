@@ -1,6 +1,6 @@
-package com.winterprojects.tvmazeapp.domain.shows.dto
+package com.winterprojects.tvmazeapp.domain.shows.dtos
 
-import com.winterprojects.tvmazeapp.domain.shows.model.ShowModel
+import com.winterprojects.tvmazeapp.domain.shows.models.ShowModel
 
 data class ShowDto(
     val averageRuntime: Int?,
@@ -15,7 +15,8 @@ data class ShowDto(
     val rating: RatingDto?,
     val status: String?,
     val summary: String?,
-    val weight: Int?
+    val weight: Int?,
+    val _embedded: EmbeddedDto?
 )
 
 fun ShowDto.toModel(): ShowModel {
@@ -32,6 +33,7 @@ fun ShowDto.toModel(): ShowModel {
         this.rating?.toModel(),
         this.status,
         this.summary,
-        this.weight
+        this.weight,
+        this._embedded?.toModel()
     )
 }
