@@ -12,7 +12,8 @@ ext.versions = [
         'mockito': '4.0.0',
         'coroutines': '1.5.2',
         'legacy': '1.0.0',
-        'navigation': '2.3.5'
+        'navigation': '2.4.0-beta02',
+        'coil': '1.4.0'
 ]
 
 ext.deps = [
@@ -37,6 +38,7 @@ ext.deps = [
         ],
 
         'koin': [
+                android: "io.insert-koin:koin-android:${versions.koin}",
                 core: "io.insert-koin:koin-core:${versions.koin}",
                 test: "io.insert-koin:koin-test:${versions.koin}",
                 test_junit4: "io.insert-koin:koin-test-junit4:${versions.koin}"
@@ -45,5 +47,6 @@ ext.deps = [
         'retrofit': "com.squareup.retrofit2:retrofit:${versions.retrofit}",
         'retrofit_gson': "com.squareup.retrofit2:converter-gson:${versions.retrofit}",
         'junit': "junit:junit:${versions.junit}",
-        'mockito': "org.mockito:mockito-core:${versions.mockito}"
+        'mockito': "org.mockito:mockito-core:${versions.mockito}",
+        'coil': "io.coil-kt:coil:${versions.coil}"
 ]

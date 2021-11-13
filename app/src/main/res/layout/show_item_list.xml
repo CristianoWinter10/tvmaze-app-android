@@ -7,9 +7,9 @@
     android:layout_marginHorizontal="@dimen/item_recycler_view_default_margin_horizontal"
     android:layout_marginVertical="@dimen/item_recycler_view_default_margin_vertical"
     android:backgroundTint="@color/show_item_card_background"
-    android:elevation="@dimen/card_view_elevation_default"
     app:cardBackgroundColor="@color/white"
     app:cardCornerRadius="@dimen/card_view_corner_radius_default">
+
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
