@@ -5,15 +5,19 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.winterprojects.tvmazeapp.R
+import com.winterprojects.tvmazeapp.common.helpers.OnItemClickListener
 import com.winterprojects.tvmazeapp.common.helpers.SearchableQueryTextListener
 import com.winterprojects.tvmazeapp.common.helpers.hideSoftKeyboard
 import com.winterprojects.tvmazeapp.databinding.FragmentSearchShowBinding
 import com.winterprojects.tvmazeapp.domain.helpers.ResultState
+import com.winterprojects.tvmazeapp.domain.shows.model.TvShowModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
-class SearchShowFragment : Fragment() {
+class SearchShowFragment : Fragment(), OnItemClickListener<TvShowModel> {
     private val searchableQueryTextListener: SearchableQueryTextListener =
         SearchableQueryTextListener(onSubmit = { hideSoftKeyboard() }, callback = { term ->
             searchShowViewModel.fetchShows(term)
@@ -42,7 +46,7 @@ class SearchShowFragment : Fragment() {
     }
 
     private fun initializeAdapter() {
-        showAdapter = ShowAdapter()
+        showAdapter = ShowAdapter(this)
         binding.recyclerViewShows.apply {
             adapter = showAdapter
             layoutManager = LinearLayoutManager(context)
@@ -66,6 +70,10 @@ class SearchShowFragment : Fragment() {
                 }
             }
         }
+    }
+
+    override fun onItemClick(item: TvShowModel) {
+        findNavController().navigate(R.id.action_searchShowFragment_to_showDetailsFragment)
     }
 }
 

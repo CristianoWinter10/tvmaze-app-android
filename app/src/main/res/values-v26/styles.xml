@@ -4,12 +4,12 @@
     <style name="TVmazeSearchView">
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_height">@dimen/search_view_height</item>
-        <item name="android:layout_marginHorizontal">@dimen/search_view_horizontal_margin</item>
-        <item name="android:layout_marginVertical">@dimen/search_view_vertical_margin</item>
+        <item name="android:layout_marginHorizontal">@dimen/default_margin_24dp</item>
+        <item name="android:layout_marginVertical">@dimen/default_margin_16dp</item>
         <item name="android:background">@drawable/background_search_bar</item>
         <item name="android:imeOptions">actionSearch</item>
         <item name="android:inputType">textFilter</item>
         <item name="android:maxLines">1</item>
-        <item name="android:paddingHorizontal">@dimen/search_view_horizontal_padding</item>
+        <item name="android:paddingHorizontal">@dimen/default_margin_16dp</item>
     </style>
 </resources>
