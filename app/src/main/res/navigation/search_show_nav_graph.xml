@@ -18,7 +18,11 @@
         android:id="@+id/showDetailsFragment"
         android:name="com.winterprojects.tvmazeapp.presentation.showDetails.ShowDetailsFragment"
         android:label="ShowDetailsFragment"
-        tools:layout="@layout/fragment_show_details"/>
+        tools:layout="@layout/fragment_show_details">
+        <argument
+            android:name="tvShow"
+            app:argType="com.winterprojects.tvmazeapp.domain.shows.models.TvShowModel" />
+    </fragment>
 
 
 </navigation>

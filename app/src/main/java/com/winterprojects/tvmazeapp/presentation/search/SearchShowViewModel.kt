@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.winterprojects.tvmazeapp.business.shows.FetchShowsUseCase
+import com.winterprojects.tvmazeapp.business.search.FetchShowsUseCase
 import com.winterprojects.tvmazeapp.domain.helpers.ResultState
 import com.winterprojects.tvmazeapp.domain.shows.models.TvShowModel
 import kotlinx.coroutines.CoroutineDispatcher
@@ -16,18 +16,18 @@ class SearchShowViewModel(
     private val fetchShowsUseCase: FetchShowsUseCase,
     private val dispatcherRequest: CoroutineDispatcher = Dispatchers.IO
 ) : ViewModel() {
-    private var _resultStateShows = MutableLiveData<ResultState<List<TvShowModel>>>()
+    private var mutableResultStateShows = MutableLiveData<ResultState<List<TvShowModel>>>()
 
     val resultStateShows: LiveData<ResultState<List<TvShowModel>>>
-        get() = _resultStateShows
+        get() = mutableResultStateShows
 
     fun fetchShows(name: String) {
-        _resultStateShows.postValue(ResultState.Loading)
+        mutableResultStateShows.postValue(ResultState.Loading)
 
         viewModelScope.launch {
             withContext(dispatcherRequest) {
                 fetchShowsUseCase(name).let { result ->
-                    _resultStateShows.postValue(result)
+                    mutableResultStateShows.postValue(result)
                 }
             }
         }

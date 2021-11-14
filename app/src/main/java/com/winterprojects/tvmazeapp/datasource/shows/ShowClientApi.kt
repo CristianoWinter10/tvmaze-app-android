@@ -8,10 +8,10 @@ private const val BASE_URL = "shows"
 
 interface ShowClientApi {
 
-    @GET("$BASE_URL/shows/{showId}/cast")
-    suspend fun fetchCastByShowId(@Path("showId") showId: Int): List<ShowDto>
+    @GET("$BASE_URL/{showId}?embed=cast")
+    suspend fun fetchCastByShowId(@Path("showId") showId: Int): ShowDto
 
-    @GET("$BASE_URL/shows/{showId}/episodes")
-    suspend fun fetchEpisodesByShowId(@Path("showId") showId: Int): List<ShowDto>
+    @GET("$BASE_URL/{showId}?embed=episodes")
+    suspend fun fetchEpisodesByShowId(@Path("showId") showId: Int): ShowDto
 
 }

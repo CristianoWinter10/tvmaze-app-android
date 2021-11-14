@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.winterprojects.tvmazeapp.R
 import com.winterprojects.tvmazeapp.common.helpers.OnItemClickListener
 import com.winterprojects.tvmazeapp.common.helpers.SearchableQueryTextListener
 import com.winterprojects.tvmazeapp.common.helpers.hideSoftKeyboard
@@ -72,8 +71,9 @@ class SearchShowFragment : Fragment(), OnItemClickListener<TvShowModel> {
         }
     }
 
-    override fun onItemClick(item: TvShowModel) {
-        findNavController().navigate(R.id.action_searchShowFragment_to_showDetailsFragment)
+    override fun onItemClick(tvShowModel: TvShowModel) {
+        val action = SearchShowFragmentDirections.actionSearchShowFragmentToShowDetailsFragment(tvShowModel)
+        findNavController().navigate(action)
     }
 }
 

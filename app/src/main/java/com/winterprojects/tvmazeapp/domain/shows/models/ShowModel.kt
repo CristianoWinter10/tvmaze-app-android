@@ -1,5 +1,9 @@
 package com.winterprojects.tvmazeapp.domain.shows.models
 
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
+
+@Parcelize
 data class ShowModel(
     val averageRuntime: Int?,
     val ended: String?,
@@ -10,9 +14,10 @@ data class ShowModel(
     val name: String,
     val officialSite: String?,
     val premiered: String?,
+    val scheduleModel: ScheduleModel?,
     val rating: RatingModel?,
     val status: String?,
     val summary: String?,
     val weight: Int?,
     val _embedded: EmbeddedModel?
-)
+): Parcelable

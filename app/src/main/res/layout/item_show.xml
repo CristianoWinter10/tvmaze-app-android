@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="show"
+            type="com.winterprojects.tvmazeapp.domain.shows.models.ShowModel" />
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/show_item_height"
+        android:layout_marginHorizontal="@dimen/default_margin_8dp"
+        android:layout_marginVertical="@dimen/default_margin_8dp"
+        android:backgroundTint="@color/show_item_card_background"
+        app:cardCornerRadius="@dimen/card_view_corner_radius_default">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/imageViewPoster"
+                android:layout_width="@dimen/show_item_poster_image_width"
+                android:layout_height="@dimen/show_item_poster_image_height"
+                android:scaleType="centerCrop"
+                app:loadImage="@{show.image.medium}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="ContentDescription"
+                tools:src="@drawable/ic_launcher_foreground" />
+
+            <TextView
+                android:id="@+id/textViewTitle"
+                style="@style/TVmaze.Title"
+                android:text="@{show.name}"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/default_margin_8dp"
+                android:layout_marginTop="@dimen/default_margin_8dp"
+                android:includeFontPadding="false"
+                app:layout_constraintEnd_toStartOf="@id/textViewAverageScore"
+                app:layout_constraintStart_toEndOf="@+id/imageViewPoster"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="Show's Title" />
+
+
+            <TextView
+                android:id="@+id/textViewAverageScore"
+                style="@style/TVmaze.TextRating"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/default_margin_8dp"
+                app:handleTvShowRating="@{show.rating.average}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/textViewTitle"
+                tools:text="8.3" />
+
+            <TextView
+                android:id="@+id/textViewSummary"
+                style="@style/TVmaze.Body"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginVertical="@dimen/default_margin_8dp"
+                android:ellipsize="end"
+                android:maxLines="4"
+                android:textStyle="italic"
+                app:handleTvShowSummary="@{show.summary}"
+                app:layout_constraintBottom_toTopOf="@id/textViewGenres"
+                app:layout_constraintEnd_toEndOf="@id/textViewAverageScore"
+                app:layout_constraintStart_toStartOf="@id/textViewTitle"
+                app:layout_constraintTop_toBottomOf="@id/textViewTitle"
+                app:layout_constraintWidth_default="wrap"
+                tools:text="This Emmy winning series is a comic look at the assorted humiliations" />
+
+            <TextView
+                android:id="@+id/textViewGenres"
+                style="@style/TVmaze.Body"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/default_margin_8dp"
+                app:handleTvShowGenres="@{show.genres}"
+                app:layout_constraintBottom_toTopOf="@id/textViewAverageRuntime"
+                app:layout_constraintEnd_toEndOf="@id/textViewAverageScore"
+                app:layout_constraintStart_toStartOf="@id/textViewTitle"
+                tools:text="Action, Adventure" />
+
+            <TextView
+                android:id="@+id/textViewAverageRuntime"
+                style="@style/TVmaze.Body"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/default_margin_8dp"
+                app:handleTvShowAverageRuntime="@{show.averageRuntime}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@id/textViewAverageScore"
+                app:layout_constraintStart_toStartOf="@id/textViewTitle"
+                tools:text="60 minutes" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+</layout>

@@ -1,7 +1,6 @@
 package com.winterprojects.tvmazeapp.common.helpers
 
 import android.app.Activity
-import android.view.View
 import android.view.inputmethod.InputMethodManager
 import androidx.fragment.app.Fragment
 
