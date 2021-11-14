@@ -11,9 +11,11 @@
     <color name="white">#FFFFFFFF</color>
 
     <color name="background">#001219</color>
-    <color name="default_text_color">#f7fff7</color>
+    <color name="default_text_color">@color/honeydew_approx</color>
 
     <color name="search_view_background">#e7ecef</color>
     <color name="show_item_card_background">#005F73</color>
     <color name="show_item_rating_bar_color">#ffc300</color>
+    <color name="color_favorite_status">#ee6c4d</color>
+    <color name="honeydew_approx">#f7fff7</color>
 </resources>

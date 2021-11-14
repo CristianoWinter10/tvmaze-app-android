@@ -16,7 +16,7 @@
     </fragment>
     <fragment
         android:id="@+id/showDetailsFragment"
-        android:name="com.winterprojects.tvmazeapp.presentation.showDetails.ShowDetailsFragment"
+        android:name="com.winterprojects.tvmazeapp.presentation.show.ShowDetailsFragment"
         android:label="ShowDetailsFragment"
         tools:layout="@layout/fragment_show_details">
         <argument

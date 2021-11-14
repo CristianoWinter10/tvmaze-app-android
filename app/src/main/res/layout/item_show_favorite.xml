@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="favoriteShow"
+            type="com.winterprojects.tvmazeapp.domain.shows.models.FavoriteShowModel" />
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/show_item_height"
+        android:layout_marginHorizontal="@dimen/default_margin_8dp"
+        android:layout_marginVertical="@dimen/default_margin_8dp"
+        android:backgroundTint="@color/show_item_card_background"
+        app:cardCornerRadius="@dimen/card_view_corner_radius_default">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/imageViewPoster"
+                android:layout_width="@dimen/show_item_poster_image_width"
+                android:layout_height="@dimen/show_item_poster_image_height"
+                android:scaleType="centerCrop"
+                app:loadImage="@{favoriteShow.imageUrl}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="ContentDescription"
+                tools:src="@drawable/ic_launcher_foreground" />
+
+            <TextView
+                android:id="@+id/textViewTitle"
+                style="@style/TVmaze.Title"
+                android:text="@{favoriteShow.name}"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/default_margin_8dp"
+                android:layout_marginTop="@dimen/default_margin_8dp"
+                android:includeFontPadding="false"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/imageViewPoster"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="Show's Title" />
+
+
+            <TextView
+                android:id="@+id/textViewSummary"
+                style="@style/TVmaze.Body"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginVertical="@dimen/default_margin_8dp"
+                android:ellipsize="end"
+                android:maxLines="4"
+                android:textStyle="italic"
+                app:handleTvShowSummary="@{favoriteShow.summary}"
+                app:layout_constraintBottom_toTopOf="@id/buttonFavorite"
+                app:layout_constraintEnd_toEndOf="@id/textViewTitle"
+                app:layout_constraintStart_toStartOf="@id/textViewTitle"
+                app:layout_constraintTop_toBottomOf="@id/textViewTitle"
+                app:layout_constraintWidth_default="wrap"
+                tools:text="This Emmy winning series is a comic look at the assorted humiliations" />
+            <Button
+                android:id="@+id/buttonFavorite"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton.Icon"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:handleTvShowFavorite="@{true}"
+                app:iconSize="@dimen/image_button_default_icon_size"
+                android:layout_margin="@dimen/default_margin_8dp"
+                app:layout_constraintStart_toEndOf="@id/imageViewPoster"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                tools:icon="@drawable/ic_favorite_filled"
+                tools:iconTint="@color/color_favorite_status"
+                tools:strokeColor="@color/honeydew_approx"
+                tools:text="@string/favorite"
+                tools:textColor="@color/default_text_color" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+</layout>

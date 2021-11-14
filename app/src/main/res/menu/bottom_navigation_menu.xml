@@ -5,4 +5,10 @@
         android:enabled="true"
         android:icon="@drawable/ic_live_tv"
         android:title="@string/home"/>
+
+    <item
+        android:id="@+id/favorites_nav_graph"
+        android:enabled="true"
+        android:icon="@drawable/ic_favorite_border"
+        android:title="@string/favorites"/>
 </menu>

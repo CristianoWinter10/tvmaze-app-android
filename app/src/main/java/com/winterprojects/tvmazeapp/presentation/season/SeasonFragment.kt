@@ -12,7 +12,7 @@ import com.winterprojects.tvmazeapp.databinding.FragmentSeasonBinding
 import com.winterprojects.tvmazeapp.domain.episodes.models.EpisodeModel
 import com.winterprojects.tvmazeapp.domain.helpers.ResultState
 import com.winterprojects.tvmazeapp.presentation.common.BundleKeys.SHOW_ID_EXTRA
-import com.winterprojects.tvmazeapp.presentation.showDetails.ShowDetailsFragmentDirections
+import com.winterprojects.tvmazeapp.presentation.show.ShowDetailsFragmentDirections
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.parameter.parametersOf
 

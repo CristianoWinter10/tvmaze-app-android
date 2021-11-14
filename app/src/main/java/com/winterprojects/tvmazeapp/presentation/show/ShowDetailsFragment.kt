@@ -1,4 +1,4 @@
-package com.winterprojects.tvmazeapp.presentation.showDetails
+package com.winterprojects.tvmazeapp.presentation.show
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -34,8 +34,14 @@ class ShowDetailsFragment : Fragment(), OnItemClickListener<EpisodeModel> {
     ): View {
         binding = FragmentShowDetailsBinding.inflate(LayoutInflater.from(context), container, false)
 
+        addFragments()
+
+        return binding.root
+    }
+
+    private fun addFragments() {
         childFragmentManager.commit {
-            replace(R.id.frameLayoutDayTimeSeriesAirs, dayTimeSeriesAirsFragment )
+            replace(R.id.frameLayoutDayTimeSeriesAirs, dayTimeSeriesAirsFragment)
 
             seasonFragment.arguments = Bundle().apply {
                 putInt(SHOW_ID_EXTRA, args.tvShow.show.id)
@@ -43,8 +49,6 @@ class ShowDetailsFragment : Fragment(), OnItemClickListener<EpisodeModel> {
 
             replace(R.id.frameLayoutSeason, seasonFragment)
         }
-
-        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -58,6 +62,10 @@ class ShowDetailsFragment : Fragment(), OnItemClickListener<EpisodeModel> {
     private fun initializeListeners() {
         binding.imageBackButton.setOnClickListener {
             findNavController().popBackStack()
+        }
+
+        binding.buttonFavorite.setOnClickListener {
+            showDetailsViewModel.updateFavoriteStatus()
         }
     }
 

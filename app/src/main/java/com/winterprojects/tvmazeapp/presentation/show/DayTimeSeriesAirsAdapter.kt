@@ -1,4 +1,4 @@
-package com.winterprojects.tvmazeapp.presentation.showDetails
+package com.winterprojects.tvmazeapp.presentation.show
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

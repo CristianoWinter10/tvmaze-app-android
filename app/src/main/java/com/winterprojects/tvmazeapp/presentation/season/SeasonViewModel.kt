@@ -19,9 +19,6 @@ class SeasonViewModel(
     private val fetchSeasonUseCase: FetchSeasonUseCase,
     private val defaultDispatcher: CoroutineDispatcher = Dispatchers.IO
 ) : ViewModel() {
-
-    private var onEpisodeClickListener: OnItemClickListener<EpisodeModel>? = null
-
     private var mutableSeasons = MutableLiveData<ResultState<List<SeasonModel>>>()
 
     val seasons: LiveData<ResultState<List<SeasonModel>>>

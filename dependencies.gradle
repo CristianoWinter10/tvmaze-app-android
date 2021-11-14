@@ -13,7 +13,8 @@ ext.versions = [
         'coroutines': '1.5.2',
         'legacy': '1.0.0',
         'navigation': '2.4.0-beta02',
-        'coil': '1.4.0'
+        'coil': '1.4.0',
+        'room': '2.3.0'
 ]
 
 ext.deps = [
@@ -25,7 +26,10 @@ ext.deps = [
                 test_espresso: "androidx.test.espresso:espresso-core:${versions.test_espresso}",
                 legacy: "androidx.legacy:legacy-support-v4:${versions.legacy}",
                 navigation_fragment_ktx:"androidx.navigation:navigation-fragment-ktx:${versions.navigation}",
-                navigation_ui_ktx: "androidx.navigation:navigation-ui-ktx:${versions.navigation}"
+                navigation_ui_ktx: "androidx.navigation:navigation-ui-ktx:${versions.navigation}",
+                room_runtime: "androidx.room:room-runtime:${versions.room}",
+                room_compiler: "androidx.room:room-compiler:${versions.room}",
+                room_ktx: "androidx.room:room-ktx:${versions.room}"
         ],
 
         'kotlin' : [

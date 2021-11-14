@@ -19,4 +19,5 @@
     <dimen name="item_day_time_default_height">72dp</dimen>
     <dimen name="item_episode_default_height">212dp</dimen>
     <dimen name="image_poster_episode_default_height">144dp</dimen>
+    <dimen name="image_button_default_icon_size">24dp</dimen>
 </resources>

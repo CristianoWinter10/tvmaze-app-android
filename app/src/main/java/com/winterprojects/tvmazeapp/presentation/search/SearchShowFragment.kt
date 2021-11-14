@@ -45,7 +45,7 @@ class SearchShowFragment : Fragment(), OnItemClickListener<TvShowModel> {
     }
 
     private fun initializeAdapter() {
-        showAdapter = ShowAdapter(this)
+        showAdapter = ShowAdapter( this)
         binding.recyclerViewShows.apply {
             adapter = showAdapter
             layoutManager = LinearLayoutManager(context)
