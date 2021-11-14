@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="episode"
+            type="com.winterprojects.tvmazeapp.domain.episodes.models.EpisodeModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/background"
+        >
+
+        <ImageButton
+            android:id="@+id/imageBackButton"
+            style="@style/TVmaze.BackButton"
+            android:layout_margin="@dimen/default_margin_8dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="ContentDescription" />
+
+        <TextView
+            android:id="@+id/textViewEpisodeDetailsTitle"
+            style="@style/TVmaze.Title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/default_margin_8dp"
+            android:layout_marginHorizontal="@dimen/default_margin_16dp"
+            android:text="@{@string/episode_name(episode.number,episode.name)}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/imageBackButton"
+            tools:text="Episode Title" />
+
+        <TextView
+            android:id="@+id/textViewEpisodeDetailsSeason"
+            style="@style/TVmaze.Body"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/default_margin_8dp"
+            android:text="@{@string/season_arg(episode.season)}"
+            android:layout_marginHorizontal="@dimen/default_margin_16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/textViewEpisodeDetailsTitle"
+            tools:text="Episode Season" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardViewEpisodeDetailsPoster"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/show_item_poster_image_height"
+            android:layout_marginTop="@dimen/default_padding_16dp"
+            android:backgroundTint="@android:color/transparent"
+            android:layout_marginHorizontal="@dimen/default_margin_16dp"
+            app:cardCornerRadius="@dimen/card_view_corner_radius_default"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/textViewEpisodeDetailsSeason">
+
+            <ImageView
+                android:id="@+id/imageViewEpisodeDetailsPoster"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                android:src="@drawable/ic_launcher_foreground"
+                app:loadImage="@{episode.image.original}"
+                tools:ignore="ContentDescription" />
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:id="@+id/textViewEpisodeDetailsSummary"
+            style="@style/TVmaze.Body"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/default_margin_16dp"
+            android:layout_marginHorizontal="@dimen/default_margin_16dp"
+            android:textStyle="italic"
+            app:handleTvShowSummary="@{episode.summary}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cardViewEpisodeDetailsPoster"
+            tools:text="The town's inhabitants must deal with surviving the post-apocalyptic conditions while searching for answers about the dome, where it came from and if and when it will go away." />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

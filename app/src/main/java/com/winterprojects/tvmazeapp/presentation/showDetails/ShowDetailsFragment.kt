@@ -6,16 +6,19 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.commit
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.winterprojects.tvmazeapp.R
+import com.winterprojects.tvmazeapp.common.helpers.OnItemClickListener
 import com.winterprojects.tvmazeapp.databinding.FragmentShowDetailsBinding
+import com.winterprojects.tvmazeapp.domain.episodes.models.EpisodeModel
 import com.winterprojects.tvmazeapp.domain.shows.models.ScheduleModel
 import com.winterprojects.tvmazeapp.presentation.common.BundleKeys.SHOW_ID_EXTRA
 import com.winterprojects.tvmazeapp.presentation.season.SeasonFragment
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.parameter.parametersOf
 
-class ShowDetailsFragment : Fragment() {
+class ShowDetailsFragment : Fragment(), OnItemClickListener<EpisodeModel> {
     private val args: ShowDetailsFragmentArgs by navArgs()
 
     private lateinit var binding: FragmentShowDetailsBinding
@@ -49,6 +52,13 @@ class ShowDetailsFragment : Fragment() {
 
         initializeObservers()
 
+        initializeListeners()
+    }
+
+    private fun initializeListeners() {
+        binding.imageBackButton.setOnClickListener {
+            findNavController().popBackStack()
+        }
     }
 
     private fun updateDayTimeSeriesAirsFragment(scheduleModel: ScheduleModel) {
@@ -61,6 +71,11 @@ class ShowDetailsFragment : Fragment() {
 
             tvShow.show.scheduleModel?.let { updateDayTimeSeriesAirsFragment(it) }
         }
+    }
+
+    override fun onItemClick(episodeModel: EpisodeModel) {
+        val action = ShowDetailsFragmentDirections.actionShowDetailsFragmentToEpisodeDetailsFragment(episodeModel)
+        findNavController().navigate(action)
     }
 
 }

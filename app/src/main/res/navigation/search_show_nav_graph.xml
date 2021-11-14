@@ -22,6 +22,18 @@
         <argument
             android:name="tvShow"
             app:argType="com.winterprojects.tvmazeapp.domain.shows.models.TvShowModel" />
+        <action
+            android:id="@+id/action_showDetailsFragment_to_episodeDetailsFragment"
+            app:destination="@id/episodeDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/episodeDetailsFragment"
+        android:name="com.winterprojects.tvmazeapp.presentation.episode.EpisodeDetailsFragment"
+        android:label="EpisodeDetailsFragment"
+        tools:layout="@layout/fragment_episode_details">
+        <argument
+            android:name="episode"
+            app:argType="com.winterprojects.tvmazeapp.domain.episodes.models.EpisodeModel" />
     </fragment>
 
 

@@ -42,7 +42,6 @@
             style="@style/TVmaze.Text"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:backgroundTint="@color/show_item_card_background"
             android:text="@{@string/episode_name(episode.number,episode.name)}"
             android:layout_marginTop="@dimen/default_margin_8dp"
             app:layout_constraintEnd_toEndOf="parent"
