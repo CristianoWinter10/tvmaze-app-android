@@ -1,11 +1,19 @@
 <resources>
     <string name="app_name">TVmaze App</string>
     <string name="title">Title</string>
-    <string name="home">Home</string>
     <string name="no_information">No information</string>
+    <string name="not_applicable">N/A</string>
+    <string name="schedule_not_available">Schedule not available</string>
+    <string name="no_genre_informed">No genrer informed</string>
+    <string name="no_summary_informed">No summary informed</string>
+    <string name="no_runtime_informed">No runtime informed</string>
     <plurals name="arg_minutes">
         <item quantity="zero">%d minute</item>
         <item quantity="one">%d minute</item>
         <item quantity="other">%d minutes</item>
     </plurals>
+    <string name="episode_name">%1$s - %2$s</string>
+    <string name="season_arg">Season %d</string>
+    <string name="home">Home</string>
+
 </resources>

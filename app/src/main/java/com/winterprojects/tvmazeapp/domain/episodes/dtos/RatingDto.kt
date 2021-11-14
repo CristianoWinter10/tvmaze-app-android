@@ -3,7 +3,7 @@ package com.winterprojects.tvmazeapp.domain.episodes.dtos
 import com.winterprojects.tvmazeapp.domain.episodes.models.RatingModel
 
 data class RatingDto(
-    val average: Double
+    val average: Double?
 )
 
 fun RatingDto.toModel(): RatingModel {

@@ -6,7 +6,7 @@ data class PersonDto(
     val _links: LinksXDto,
     val birthday: String,
     val country: CountryDto,
-    val deathday: Any,
+    val deathday: String,
     val gender: String,
     val id: Int,
     val image: CastImageXDto,

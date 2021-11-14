@@ -9,7 +9,17 @@
         <item name="android:textStyle">bold</item>
     </style>
 
+    <style name="TVmaze.SubTitle">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
     <style name="TVmaze.Text">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="TVmaze.Body">
         <item name="android:textSize">12sp</item>
     </style>
     <style name="TVmaze.TextRating">

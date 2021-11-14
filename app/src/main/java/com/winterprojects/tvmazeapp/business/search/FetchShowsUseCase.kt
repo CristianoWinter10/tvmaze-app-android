@@ -1,4 +1,4 @@
-package com.winterprojects.tvmazeapp.business.shows
+package com.winterprojects.tvmazeapp.business.search
 
 import com.winterprojects.tvmazeapp.domain.helpers.ResultState
 import com.winterprojects.tvmazeapp.domain.shows.models.TvShowModel

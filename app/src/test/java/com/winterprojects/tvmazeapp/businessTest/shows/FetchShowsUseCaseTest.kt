@@ -1,7 +1,7 @@
 package com.winterprojects.tvmazeapp.businessTest.shows
 
 import com.winterprojects.tvmazeapp.BaseTest
-import com.winterprojects.tvmazeapp.business.shows.FetchShowsUseCase
+import com.winterprojects.tvmazeapp.business.search.FetchShowsUseCase
 import com.winterprojects.tvmazeapp.datasource.search.SearchRepository
 import kotlinx.coroutines.runBlocking
 import org.junit.Before

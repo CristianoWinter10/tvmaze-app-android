@@ -9,7 +9,13 @@
     <dimen name="default_margin_8dp">8dp</dimen>
     <dimen name="default_margin_16dp">16dp</dimen>
     <dimen name="default_margin_24dp">24dp</dimen>
-    <dimen name="default_margin_32dp">24dp</dimen>
+    <dimen name="default_margin_32dp">32dp</dimen>
     <dimen name="search_view_default_radius">24dp</dimen>
+
     <dimen name="card_view_corner_radius_default">8dp</dimen>
+    <dimen name="default_padding_16dp">16dp</dimen>
+    <dimen name="item_day_time_default_width">56dp</dimen>
+    <dimen name="item_day_time_default_height">72dp</dimen>
+    <dimen name="item_episode_default_height">212dp</dimen>
+    <dimen name="image_poster_episode_default_height">144dp</dimen>
 </resources>
