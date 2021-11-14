@@ -17,22 +17,121 @@
         <com.google.android.material.appbar.AppBarLayout
             android:id="@+id/showDetailsAppBar"
             android:layout_width="match_parent"
-            android:layout_height="244dp">
+            android:layout_height="wrap_content"
+            android:background="@color/background">
 
             <com.google.android.material.appbar.CollapsingToolbarLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 app:layout_scrollFlags="scroll|snap">
 
-                <ImageView
+                <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:scaleType="centerCrop"
-                    android:src="@drawable/ic_launcher_foreground"
-                    app:loadImage="@{show.image.original}"
-                    tools:ignore="ContentDescription"
-                    />
+                    android:layout_height="wrap_content">
 
+                    <ImageButton
+                        android:id="@+id/imageBackButton"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        style="@style/TVmaze.BackButton"
+                        tools:ignore="ContentDescription" />
+
+                    <TextView
+                        android:id="@+id/textViewShowDetailsTitle"
+                        style="@style/TVmaze.Title"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="@dimen/default_margin_16dp"
+                        android:gravity="center|start"
+                        android:text="@{show.name}"
+                        app:layout_constraintBottom_toTopOf="@+id/flow"
+                        app:layout_constraintEnd_toStartOf="@id/imageViewPosterImageDetails"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/imageBackButton"
+                        app:layout_constraintVertical_chainStyle="packed"
+                        tools:text="Show's Title" />
+
+                    <androidx.constraintlayout.helper.widget.Flow
+                        android:id="@+id/flow"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        app:constraint_referenced_ids="ratingBarShowDetailsRating, textViewShowDetailsRating"
+                        app:flow_horizontalStyle="packed"
+                        app:flow_horizontalBias="0.0"
+                        app:flow_horizontalGap="@dimen/default_margin_8dp"
+                        app:layout_constraintBottom_toTopOf="@+id/textViewShowDetailsGenres"
+                        app:layout_constraintEnd_toEndOf="@id/textViewShowDetailsTitle"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toStartOf="@id/textViewShowDetailsTitle"
+                        app:layout_constraintTop_toBottomOf="@+id/textViewShowDetailsTitle" />
+
+                    <RatingBar
+                        android:id="@+id/ratingBarShowDetailsRating"
+                        style="@style/Widget.AppCompat.RatingBar.Small"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/default_margin_16dp"
+                        android:numStars="10"
+                        android:progressBackgroundTint="@color/cardview_light_background"
+                        android:progressTint="@color/show_item_rating_bar_color"
+                        android:rating="@{show.rating.average ?? 0.0f}"
+                        android:secondaryProgressTint="@color/show_item_rating_bar_color" />
+
+                    <TextView
+                        android:id="@+id/textViewShowDetailsRating"
+                        style="@style/TVmaze.TextRating"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/default_margin_8dp"
+                        app:handleTvShowRating="@{show.rating.average}"
+                        app:layout_constraintBottom_toBottomOf="@id/ratingBarShowDetailsRating"
+                        app:layout_constraintStart_toEndOf="@id/ratingBarShowDetailsRating"
+                        app:layout_constraintTop_toTopOf="@id/ratingBarShowDetailsRating"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        tools:text="8.2" />
+
+                    <TextView
+                        android:id="@+id/textViewShowDetailsGenres"
+                        style="@style/TVmaze.Body"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/default_margin_8dp"
+                        app:handleTvShowGenres="@{show.genres}"
+                        app:layout_constraintBottom_toTopOf="@+id/textViewShowDetailsAverageRuntime"
+                        app:layout_constraintEnd_toEndOf="@id/textViewShowDetailsTitle"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toStartOf="@id/textViewShowDetailsTitle"
+                        app:layout_constraintTop_toBottomOf="@+id/flow"
+                        tools:text="Adventure, Action" />
+
+                    <TextView
+                        android:id="@+id/textViewShowDetailsAverageRuntime"
+                        style="@style/TVmaze.Body"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/default_margin_8dp"
+                        app:handleTvShowAverageRuntime="@{show.averageRuntime}"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="@id/textViewShowDetailsTitle"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toStartOf="@id/textViewShowDetailsTitle"
+                        app:layout_constraintTop_toBottomOf="@+id/textViewShowDetailsGenres"
+                        tools:text="30 minutes" />
+
+                    <ImageView
+                        android:id="@+id/imageViewPosterImageDetails"
+                        android:layout_width="@dimen/show_item_poster_image_width"
+                        android:layout_height="@dimen/show_item_poster_image_height"
+                        android:layout_margin="@dimen/default_margin_16dp"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/ic_launcher_foreground"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:loadImage="@{show.image.original}"
+                        tools:ignore="ContentDescription" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
             </com.google.android.material.appbar.CollapsingToolbarLayout>
         </com.google.android.material.appbar.AppBarLayout>
 
@@ -50,17 +149,6 @@
                 android:padding="@dimen/default_padding_16dp">
 
                 <TextView
-                    android:id="@+id/textViewShowDetailsTitle"
-                    style="@style/TVmaze.Title"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:text="@{show.name}"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    tools:text="Show's Title" />
-
-                <TextView
                     android:id="@+id/textViewShowDetailsSummary"
                     style="@style/TVmaze.Body"
                     android:layout_width="0dp"
@@ -70,75 +158,27 @@
                     app:handleTvShowSummary="@{show.summary}"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/textViewShowDetailsTitle"
+                    app:layout_constraintTop_toTopOf="parent"
                     tools:text="The town's inhabitants must deal with surviving the post-apocalyptic conditions while searching for answers about the dome, where it came from and if and when it will go away." />
 
-                <RatingBar
-                    android:id="@+id/ratingBarShowDetailsRating"
-                    style="@style/Widget.AppCompat.RatingBar.Small"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/default_margin_16dp"
-                    android:numStars="10"
-                    android:progressBackgroundTint="@color/cardview_light_background"
-                    android:progressTint="@color/show_item_rating_bar_color"
-                    android:rating="@{show.rating.average ?? 0.0f}"
-                    android:secondaryProgressTint="@color/show_item_rating_bar_color"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.0"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/textViewShowDetailsSummary" />
 
-                <TextView
-                    android:id="@+id/textViewShowDetailsRating"
-                    style="@style/TVmaze.TextRating"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/default_margin_8dp"
-                    app:handleTvShowRating="@{show.rating.average}"
-                    app:layout_constraintBottom_toBottomOf="@id/ratingBarShowDetailsRating"
-                    app:layout_constraintStart_toEndOf="@id/ratingBarShowDetailsRating"
-                    app:layout_constraintTop_toTopOf="@id/ratingBarShowDetailsRating"
-                    tools:text="8.2" />
-
-                <TextView
-                    android:id="@+id/textViewShowDetailsGenres"
-                    style="@style/TVmaze.Body"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/default_margin_8dp"
-                    app:handleTvShowGenres="@{show.genres}"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/ratingBarShowDetailsRating"
-                    tools:text="Adventure, Action" />
-                <TextView
-                    android:id="@+id/textViewShowDetailsAverageRuntime"
-                    style="@style/TVmaze.Body"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/default_margin_8dp"
-                    app:handleTvShowAverageRuntime="@{show.averageRuntime}"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/textViewShowDetailsGenres"
-                    tools:text="30 minutes" />
                 <FrameLayout
                     android:id="@+id/frameLayoutDayTimeSeriesAirs"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/default_margin_16dp"
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/textViewShowDetailsAverageRuntime"
-                    app:layout_constraintEnd_toEndOf="parent"/>
+                    app:layout_constraintTop_toBottomOf="@id/textViewShowDetailsSummary" />
+
                 <FrameLayout
                     android:id="@+id/frameLayoutSeason"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/default_margin_16dp"
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/frameLayoutDayTimeSeriesAirs"
-                    app:layout_constraintEnd_toEndOf="parent"/>
+                    app:layout_constraintTop_toBottomOf="@id/frameLayoutDayTimeSeriesAirs" />
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.core.widget.NestedScrollView>
 

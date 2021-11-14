@@ -12,7 +12,7 @@ class RatingDtoTest {
 
         //Arrange
         val ratingDto = RatingDto(
-            average = 8.9
+            average = 8.9f
         )
 
         //Act

@@ -9,7 +9,7 @@
 
     <androidx.appcompat.widget.SearchView
         android:id="@+id/searchViewShowTitle"
-        style="@style/TVmazeSearchView"
+        style="@style/TVmaze.TVmazeSearchView"
         app:queryHint="@string/title"
         app:iconifiedByDefault="false"
         app:layout_constraintEnd_toEndOf="parent"

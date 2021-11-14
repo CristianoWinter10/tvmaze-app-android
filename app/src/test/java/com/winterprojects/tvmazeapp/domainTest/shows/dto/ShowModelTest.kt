@@ -31,11 +31,12 @@ class ShowModelTest {
             name = "Grandmaster",
             officialSite = "",
             premiered = "2028-10-16",
-            rating = RatingDto(average = 6.7),
+            rating = RatingDto(average = 6.7f),
             status = "Ended",
             summary = "As the grandmaster who founded...",
             weight = 0,
-            _embedded = null
+            _embedded = null,
+            schedule = null
         )
 
         //Act

@@ -30,11 +30,12 @@ class TvShowDtoTest {
                 name = "Matrix",
                 officialSite = "",
                 premiered = "1993-03-01",
-                rating = RatingDto(average = 6.7),
+                rating = RatingDto(average = 6.7f),
                 status = "Ended",
                 summary = "Steven Matrix is a freelance hitman who will...",
                 weight = 0,
-                _embedded = null
+                _embedded = null,
+                schedule = null
             )
         )
 

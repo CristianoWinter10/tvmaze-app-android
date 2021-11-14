@@ -26,11 +26,12 @@ object MockShowDataHelper {
             name = "Matrix",
             officialSite = "",
             premiered = "1993-03-01",
-            rating = RatingModel(average = 6.7),
+            rating = RatingModel(average = 6.7f),
             status = "Ended",
             summary = "Steven Matrix is a freelance hitman who will...",
             weight = 0,
-            _embedded = null
+            _embedded = null,
+            scheduleModel = null
         )
     )
 
@@ -53,15 +54,16 @@ object MockShowDataHelper {
         name = "Grandmaster",
         officialSite = "",
         premiered = "2028-10-16",
-        rating = RatingModel(average = 6.7),
+        rating = RatingModel(average = 6.7f),
         status = "Ended",
         summary = "As the grandmaster who founded...",
         weight = 0,
-        _embedded = null
+        _embedded = null,
+        scheduleModel = null,
     )
 
     val ratingModel = RatingModel(
-        average = 8.9
+        average = 8.9f
     )
 
     val imageModel = ImageModel(
