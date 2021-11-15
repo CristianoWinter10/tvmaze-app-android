@@ -3,6 +3,8 @@ package com.winterprojects.tvmazeapp.datasource.shows
 import com.winterprojects.tvmazeapp.domain.shows.entities.toModel
 import com.winterprojects.tvmazeapp.domain.shows.models.FavoriteShowModel
 import com.winterprojects.tvmazeapp.domain.shows.models.toEntity
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.distinctUntilChanged
 
 class ShowLocalDatasourceImpl(private val showDao: ShowDao) : ShowLocalDatasource {
     override suspend fun fetchAll(): List<FavoriteShowModel> {
@@ -17,8 +19,8 @@ class ShowLocalDatasourceImpl(private val showDao: ShowDao) : ShowLocalDatasourc
         return showDao.delete(favoriteShowModel.toEntity())
     }
 
-    override suspend fun checkShowIsAlreadyFavorite(showId: Int): Boolean {
-        return showDao.checkIsFavorite(showId)
+    override suspend fun checkShowIsAlreadyFavorite(showId: Int): Flow<Boolean> {
+        return showDao.checkIsFavorite(showId).distinctUntilChanged()
     }
 
 }

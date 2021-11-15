@@ -5,8 +5,6 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.winterprojects.tvmazeapp.business.shows.FetchSeasonUseCase
-import com.winterprojects.tvmazeapp.common.helpers.OnItemClickListener
-import com.winterprojects.tvmazeapp.domain.episodes.models.EpisodeModel
 import com.winterprojects.tvmazeapp.domain.helpers.ResultState
 import com.winterprojects.tvmazeapp.domain.season.SeasonModel
 import kotlinx.coroutines.CoroutineDispatcher

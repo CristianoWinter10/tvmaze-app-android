@@ -7,10 +7,7 @@ import androidx.lifecycle.viewModelScope
 import com.winterprojects.tvmazeapp.business.shows.*
 import com.winterprojects.tvmazeapp.domain.helpers.ResultState
 import com.winterprojects.tvmazeapp.domain.shows.models.FavoriteShowModel
-import kotlinx.coroutines.CoroutineDispatcher
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
+import kotlinx.coroutines.*
 
 class FavoritesViewModel(
     private val fetchAllFavoriteShowsUseCase: FetchAllFavoriteShowsUseCase,
@@ -45,11 +42,11 @@ class FavoritesViewModel(
         _lastPositionFavoriteShowModelRemoved = position
 
         favorites.value?.data?.let {
-            _lastFavoriteShowModelRemoved = it.first { x -> x.id == favoriteShowModel.id }
-
-            it.remove(_lastFavoriteShowModelRemoved)
-
-            removeFavoriteItemOnDb()
+            it.firstOrNull { x -> x.id == favoriteShowModel.id }?.let { favShowModel ->
+                _lastFavoriteShowModelRemoved = favShowModel
+                it.remove(_lastFavoriteShowModelRemoved)
+                removeFavoriteItemOnDb()
+            }
 
             if (it.isEmpty()) {
                 mutableFavorites.postValue(ResultState.Empty)
@@ -61,7 +58,7 @@ class FavoritesViewModel(
     }
 
     private fun removeFavoriteItemOnDb() {
-        viewModelScope.launch {
+        MainScope().launch {
             withContext(defaultDispatcher) {
                 deleteFavoriteShowUseCase(_lastFavoriteShowModelRemoved)
             }
@@ -92,7 +89,7 @@ class FavoritesViewModel(
     }
 
     private fun undoRemoveFavoriteShowOnDB() {
-        viewModelScope.launch {
+        MainScope().launch {
             withContext(defaultDispatcher) {
                 upInsertFavoriteShowUseCase(_lastFavoriteShowModelRemoved)
             }

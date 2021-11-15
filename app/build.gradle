@@ -75,6 +75,8 @@ dependencies {
     implementation deps.android.navigation_ui_ktx
     implementation deps.android.room_runtime
     implementation deps.android.room_ktx
+    implementation deps.android.paging
+    implementation deps.android.paging_common_ktx
 
     kapt deps.android.room_compiler
 

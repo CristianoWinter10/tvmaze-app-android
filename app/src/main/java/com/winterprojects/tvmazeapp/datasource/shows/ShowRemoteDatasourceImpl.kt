@@ -11,4 +11,13 @@ class ShowRemoteDatasourceImpl(private val showClientApi: ShowClientApi) : ShowR
     override suspend fun fetchEpisodesByShowId(showId: Int): ShowModel {
         return showClientApi.fetchEpisodesByShowId(showId).toModel()
     }
+
+    override suspend fun fetchShows(page: Int): List<ShowModel> {
+        return showClientApi.fetchShows(page).map { it.toModel() }
+    }
+
+    override suspend fun fetchShowMainInfoById(showId: Int): ShowModel {
+        return showClientApi.fetchShowMainInfoById(showId).toModel()
+    }
+
 }

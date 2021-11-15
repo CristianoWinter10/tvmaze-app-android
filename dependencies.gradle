@@ -14,7 +14,9 @@ ext.versions = [
         'legacy': '1.0.0',
         'navigation': '2.4.0-beta02',
         'coil': '1.4.0',
-        'room': '2.3.0'
+        'room': '2.3.0',
+        'paging': '3.0.1',
+        'paging_common_ktx': '2.1.2',
 ]
 
 ext.deps = [
@@ -29,7 +31,9 @@ ext.deps = [
                 navigation_ui_ktx: "androidx.navigation:navigation-ui-ktx:${versions.navigation}",
                 room_runtime: "androidx.room:room-runtime:${versions.room}",
                 room_compiler: "androidx.room:room-compiler:${versions.room}",
-                room_ktx: "androidx.room:room-ktx:${versions.room}"
+                room_ktx: "androidx.room:room-ktx:${versions.room}",
+                paging: "androidx.paging:paging-runtime:${versions.paging}",
+                paging_common_ktx: "androidx.paging:paging-common-ktx:${versions.paging_common_ktx}"
         ],
 
         'kotlin' : [

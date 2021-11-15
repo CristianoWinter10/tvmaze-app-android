@@ -2,6 +2,7 @@ package com.winterprojects.tvmazeapp.datasource.shows
 
 import com.winterprojects.tvmazeapp.domain.shows.models.FavoriteShowModel
 import com.winterprojects.tvmazeapp.domain.shows.models.ShowModel
+import kotlinx.coroutines.flow.Flow
 
 class ShowRepositoryImpl(private val showRemoteDatasource: ShowRemoteDatasource,
                          private val showLocalDatasource: ShowLocalDatasource): ShowRepository {
@@ -17,7 +18,7 @@ class ShowRepositoryImpl(private val showRemoteDatasource: ShowRemoteDatasource,
         return showRemoteDatasource.fetchEpisodesByShowId(showId)
     }
 
-    override suspend fun checkShowIsAlreadyFavorite(showId: Int): Boolean {
+    override suspend fun checkShowIsAlreadyFavorite(showId: Int): Flow<Boolean> {
         return showLocalDatasource.checkShowIsAlreadyFavorite(showId)
     }
 
@@ -27,6 +28,14 @@ class ShowRepositoryImpl(private val showRemoteDatasource: ShowRemoteDatasource,
 
     override suspend fun deleteShowFavorite(favoriteShowModel: FavoriteShowModel) {
         showLocalDatasource.delete(favoriteShowModel)
+    }
+
+    override suspend fun fetchShows(page: Int): List<ShowModel> {
+        return showRemoteDatasource.fetchShows(page)
+    }
+
+    override suspend fun fetchShowMainInfoById(showId: Int): ShowModel {
+        return showRemoteDatasource.fetchShowMainInfoById(showId)
     }
 
 }

@@ -9,10 +9,10 @@ import com.winterprojects.tvmazeapp.common.helpers.OnItemClickListener
 import com.winterprojects.tvmazeapp.databinding.ItemShowBinding
 import com.winterprojects.tvmazeapp.domain.shows.models.TvShowModel
 
-class ShowAdapter(
+class SearchShowAdapter(
     private val itemClickListener: OnItemClickListener<TvShowModel>
 ) :
-    ListAdapter<TvShowModel, ShowAdapter.ShowVideoHolder>(diffCallback) {
+    ListAdapter<TvShowModel, SearchShowAdapter.ShowVideoHolder>(diffCallback) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ShowVideoHolder {
         val binding =

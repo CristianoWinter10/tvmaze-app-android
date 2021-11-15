@@ -9,32 +9,16 @@
         android:id="@+id/searchShowFragment"
         android:name="com.winterprojects.tvmazeapp.presentation.search.SearchShowFragment"
         android:label="fragment_search_show"
-        tools:layout="@layout/fragment_search_show" >
-        <action
-            android:id="@+id/action_searchShowFragment_to_showDetailsFragment"
-            app:destination="@id/showDetailsFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/showDetailsFragment"
-        android:name="com.winterprojects.tvmazeapp.presentation.show.ShowDetailsFragment"
-        android:label="ShowDetailsFragment"
-        tools:layout="@layout/fragment_show_details">
-        <argument
-            android:name="tvShow"
-            app:argType="com.winterprojects.tvmazeapp.domain.shows.models.TvShowModel" />
-        <action
-            android:id="@+id/action_showDetailsFragment_to_episodeDetailsFragment"
-            app:destination="@id/episodeDetailsFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/episodeDetailsFragment"
-        android:name="com.winterprojects.tvmazeapp.presentation.episode.EpisodeDetailsFragment"
-        android:label="EpisodeDetailsFragment"
-        tools:layout="@layout/fragment_episode_details">
-        <argument
-            android:name="episode"
-            app:argType="com.winterprojects.tvmazeapp.domain.episodes.models.EpisodeModel" />
-    </fragment>
+        tools:layout="@layout/fragment_search_show">
 
+        <action
+            android:id="@+id/action_searchShowFragment_to_home_nav_graph"
+            app:destination="@id/show_details_nav_graph">
+            <argument
+                android:name="showId"
+                app:argType="integer" />
+        </action>
+    </fragment>
+    <include app:graph="@navigation/show_details_nav_graph" />
 
 </navigation>

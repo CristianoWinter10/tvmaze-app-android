@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.winterprojects.tvmazeapp.common.helpers.OnItemClickListener
 import com.winterprojects.tvmazeapp.databinding.FragmentFavoritesBinding
@@ -15,7 +16,8 @@ import org.koin.android.ext.android.inject
 import com.google.android.material.snackbar.Snackbar
 import com.winterprojects.tvmazeapp.R
 
-class FavoritesFragment : Fragment(), OnItemClickListener<FavoriteShowModel>, OnRemoveFavoriteItemClickListener {
+class FavoritesFragment : Fragment(), OnItemClickListener<FavoriteShowModel>,
+    OnRemoveFavoriteItemClickListener {
     private var snackBar: Snackbar? = null
     private val favoritesViewModel: FavoritesViewModel by inject()
 
@@ -58,8 +60,11 @@ class FavoritesFragment : Fragment(), OnItemClickListener<FavoriteShowModel>, On
         }
     }
 
-    override fun onItemClick(item: FavoriteShowModel) {
-        //It will be implemented
+    override fun onItemClick(favoriteShowModel: FavoriteShowModel) {
+        val action = FavoritesFragmentDirections.actionFavoritesFragmentToShowDetailsNavGraph(
+            favoriteShowModel.id
+        )
+        findNavController().navigate(action)
     }
 
     override fun onRemoveFavoriteItemClickListener(
@@ -67,11 +72,11 @@ class FavoritesFragment : Fragment(), OnItemClickListener<FavoriteShowModel>, On
         favoriteShowModel: FavoriteShowModel
     ) {
         favoriteAdapter.notifyItemRemoved(itemPosition)
-        favoritesViewModel.removeFavoriteItem(itemPosition,favoriteShowModel)
+        favoritesViewModel.removeFavoriteItem(itemPosition, favoriteShowModel)
         showUndoRemoveFavorite()
     }
 
-    private fun showUndoRemoveFavorite(){
+    private fun showUndoRemoveFavorite() {
         snackBar?.dismiss()
         snackBar = Snackbar.make(
             requireView(), R.string.undo_remove_favorite,

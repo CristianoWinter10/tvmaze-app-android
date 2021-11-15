@@ -5,57 +5,74 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.winterprojects.tvmazeapp.business.shows.CheckShowIsAlreadyFavoriteUseCase
+import com.winterprojects.tvmazeapp.business.shows.FetchShowMainInformationUseCase
 import com.winterprojects.tvmazeapp.business.shows.UpdateShowFavoriteStatusUseCase
 import com.winterprojects.tvmazeapp.domain.helpers.ResultState
-import com.winterprojects.tvmazeapp.domain.shows.models.TvShowModel
+import com.winterprojects.tvmazeapp.domain.shows.models.ShowModel
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 class ShowDetailsViewModel(
-    tvShowModel: TvShowModel,
+    showId: Int,
+    private val fetchShowMainInformationUseCase: FetchShowMainInformationUseCase,
     private val checkShowIsAlreadyFavoriteUseCase: CheckShowIsAlreadyFavoriteUseCase,
     private val updateShowFavoriteStatusUseCase: UpdateShowFavoriteStatusUseCase
 ) : ViewModel() {
 
-    private var mutableTvShow = MutableLiveData<TvShowModel>()
+    private var mutableShow = MutableLiveData<ShowModel>()
 
-    val tvShow: LiveData<TvShowModel>
-        get() = mutableTvShow
-
+    val show: LiveData<ShowModel>
+        get() = mutableShow
 
     init {
         viewModelScope.launch {
             withContext(Dispatchers.IO) {
-                checkShowIsAlreadyFavoriteUseCase(tvShowModel.show.id).let { isFavorite ->
-                    tvShowModel.show.isFavorite = isFavorite
-                    mutableTvShow.postValue(tvShowModel)
+                fetchShowMainInformationUseCase(showId).let { resultState ->
+                    when (resultState) {
+                        is ResultState.Loaded -> {
+                            val show = resultState.data
+                            mutableShow.postValue(show)
+                            keepCheckingShowIsFavorite(showId, show)
+                        }
+                    }
                 }
             }
         }
     }
 
+    private suspend fun keepCheckingShowIsFavorite(
+        showId: Int,
+        show: ShowModel
+    ) {
+        checkShowIsAlreadyFavoriteUseCase(showId).collectLatest { isFavorite ->
+            show.isFavorite = isFavorite
+            mutableShow.postValue(show)
+        }
+    }
+
     fun updateFavoriteStatus() {
-        mutableTvShow.value?.let { tvShow ->
+        mutableShow.value?.let { show ->
             viewModelScope.launch {
                 withContext(Dispatchers.IO) {
 
-                    tvShow.show.isFavorite = !tvShow.show.isFavorite
+                    show.isFavorite = !show.isFavorite
 
-                    updateShowFavoriteStatusUseCase(tvShow.show).let { result ->
+                    updateShowFavoriteStatusUseCase(show).let { result ->
                         when (result) {
                             is ResultState.ErrorState -> {
-                                tvShow.show.isFavorite = !tvShow.show.isFavorite
+                                show.isFavorite = !show.isFavorite
                             }
                             is ResultState.Loaded -> {
-                                mutableTvShow.postValue(tvShow)
+                                mutableShow.postValue(show)
                             }
                             else -> {
-                                tvShow.show.isFavorite = !tvShow.show.isFavorite
+                                show.isFavorite = !show.isFavorite
                             }
                         }
 
-                        mutableTvShow.postValue(tvShow)
+                        mutableShow.postValue(show)
 
                     }
                 }

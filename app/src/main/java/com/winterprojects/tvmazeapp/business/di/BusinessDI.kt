@@ -34,5 +34,13 @@ object BusinessDI {
         single<FetchAllFavoriteShowsUseCase> {
             FetchAllFavoriteShowsUseCaseImpl(get())
         }
+
+        single<FetchShowsPaginatedUseCase> {
+            FetchShowsPaginatedUseCaseImpl(get())
+        }
+
+        single<FetchShowMainInformationUseCase> {
+            FetchShowMainInformationUseCaseImpl(get())
+        }
     }
 }

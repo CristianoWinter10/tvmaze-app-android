@@ -62,7 +62,6 @@
                 app:layout_constraintEnd_toEndOf="@id/textViewTitle"
                 app:layout_constraintStart_toStartOf="@id/textViewTitle"
                 app:layout_constraintTop_toBottomOf="@id/textViewTitle"
-                app:layout_constraintWidth_default="wrap"
                 tools:text="This Emmy winning series is a comic look at the assorted humiliations" />
             <Button
                 android:id="@+id/buttonFavorite"

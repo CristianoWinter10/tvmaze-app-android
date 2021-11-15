@@ -20,4 +20,5 @@
     <string name="favorites">Favorites</string>
     <string name="undo_remove_favorite">Undo remove favorite</string>
     <string name="undo">Undo</string>
+    <string name="search">Search</string>
 </resources>

@@ -2,6 +2,7 @@ package com.winterprojects.tvmazeapp.datasource.shows
 
 import androidx.room.*
 import com.winterprojects.tvmazeapp.domain.shows.entities.FavoriteShowEntity
+import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface ShowDao {
@@ -26,5 +27,5 @@ interface ShowDao {
                 id = :showId
         """
     )
-    suspend fun checkIsFavorite(showId: Int): Boolean
+    fun checkIsFavorite(showId: Int): Flow<Boolean>
 }

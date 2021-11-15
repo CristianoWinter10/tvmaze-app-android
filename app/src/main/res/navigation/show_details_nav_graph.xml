@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/show_details_nav_graph"
+    app:startDestination="@id/showDetailsFragment">
+
+    <fragment
+        android:id="@+id/showDetailsFragment"
+        android:name="com.winterprojects.tvmazeapp.presentation.show.ShowDetailsFragment"
+        tools:layout="@layout/fragment_show_details"
+        android:label="ShowDetailsFragment">
+        <argument
+            android:name="showId"
+            app:argType="integer" />
+        <action
+            android:id="@+id/action_showDetailsFragment_to_episodeDetailsFragment"
+            app:destination="@id/episodeDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/episodeDetailsFragment"
+        android:name="com.winterprojects.tvmazeapp.presentation.episode.EpisodeDetailsFragment"
+        tools:layout="@layout/fragment_episode_details"
+        android:label="EpisodeDetailsFragment">
+        <argument
+            android:name="episode"
+            app:argType="com.winterprojects.tvmazeapp.domain.episodes.models.EpisodeModel" />
+    </fragment>
+</navigation>

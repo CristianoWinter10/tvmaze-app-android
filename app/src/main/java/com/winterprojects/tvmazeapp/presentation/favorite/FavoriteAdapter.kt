@@ -10,7 +10,7 @@ import com.winterprojects.tvmazeapp.databinding.ItemShowFavoriteBinding
 import com.winterprojects.tvmazeapp.domain.shows.models.FavoriteShowModel
 
 class FavoriteAdapter(
-    private val itemClickListener: OnItemClickListener<FavoriteShowModel>,
+    private val onShowItemClickListener: OnItemClickListener<FavoriteShowModel>,
     private val onRemoveFavoriteItemClickListener: OnRemoveFavoriteItemClickListener
 ) :
     ListAdapter<FavoriteShowModel, FavoriteAdapter.FavoriteVideoHolder>(diffCallback) {
@@ -18,7 +18,7 @@ class FavoriteAdapter(
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FavoriteVideoHolder {
         val binding =
             ItemShowFavoriteBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return FavoriteVideoHolder(binding, itemClickListener, onRemoveFavoriteItemClickListener)
+        return FavoriteVideoHolder(binding, onShowItemClickListener, onRemoveFavoriteItemClickListener)
     }
 
     override fun onBindViewHolder(holder: FavoriteVideoHolder, position: Int) {
@@ -27,7 +27,7 @@ class FavoriteAdapter(
 
     class FavoriteVideoHolder(
         private val binding: ItemShowFavoriteBinding,
-        private val itemClickListener: OnItemClickListener<FavoriteShowModel>,
+        private val onShowItemClickListener: OnItemClickListener<FavoriteShowModel>,
         private val onRemoveFavoriteItemClickListener: OnRemoveFavoriteItemClickListener
     ) :
         RecyclerView.ViewHolder(binding.root) {
@@ -39,7 +39,7 @@ class FavoriteAdapter(
             }
 
             this.itemView.setOnClickListener {
-                itemClickListener.onItemClick(favoriteShowModel)
+                onShowItemClickListener.onItemClick(favoriteShowModel)
             }
         }
 
