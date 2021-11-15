@@ -22,7 +22,7 @@ class SearchShowFragment : Fragment(), OnItemClickListener<TvShowModel> {
             searchShowViewModel.fetchShows(term)
         })
 
-    private lateinit var showAdapter: ShowAdapter
+    private lateinit var searchShowAdapter: SearchShowAdapter
     private lateinit var binding: FragmentSearchShowBinding
 
     private val searchShowViewModel: SearchShowViewModel by viewModel()
@@ -45,9 +45,9 @@ class SearchShowFragment : Fragment(), OnItemClickListener<TvShowModel> {
     }
 
     private fun initializeAdapter() {
-        showAdapter = ShowAdapter(this)
+        searchShowAdapter = SearchShowAdapter(this)
         binding.recyclerViewShows.apply {
-            adapter = showAdapter
+            adapter = searchShowAdapter
             layoutManager = LinearLayoutManager(context)
         }
     }
@@ -62,7 +62,7 @@ class SearchShowFragment : Fragment(), OnItemClickListener<TvShowModel> {
                     // it will be implement
                 }
                 is ResultState.Loaded -> {
-                    showAdapter.submitList(result.data)
+                    searchShowAdapter.submitList(result.data)
                 }
                 ResultState.Loading -> {
                     // it will be implement
@@ -72,7 +72,8 @@ class SearchShowFragment : Fragment(), OnItemClickListener<TvShowModel> {
     }
 
     override fun onItemClick(tvShowModel: TvShowModel) {
-        val action = SearchShowFragmentDirections.actionSearchShowFragmentToShowDetailsFragment(tvShowModel)
+        val action =
+            SearchShowFragmentDirections.actionSearchShowFragmentToHomeNavGraph(tvShowModel.show.id)
         findNavController().navigate(action)
     }
 }

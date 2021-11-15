@@ -6,5 +6,5 @@ import kotlinx.parcelize.Parcelize
 @Parcelize
 data class TvShowModel(
     val score: Double?,
-    val show: ShowModel
+    val show: ShowModel,
 ): Parcelable

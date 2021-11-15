@@ -1,24 +1,22 @@
-package com.winterprojects.tvmazeapp.presentation.showDetails
+package com.winterprojects.tvmazeapp.presentation.show
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.viewModelScope
-import androidx.lifecycle.whenCreated
+import androidx.lifecycle.lifecycleScope
 import com.winterprojects.tvmazeapp.databinding.FragmentDayTimeSeriesAirsBinding
 import com.winterprojects.tvmazeapp.domain.helpers.ResultState
 import com.winterprojects.tvmazeapp.domain.shows.models.ScheduleModel
-import kotlinx.coroutines.launch
-import org.koin.androidx.viewmodel.ext.android.viewModel
+import org.koin.androidx.viewmodel.ext.android.getViewModel
 
 class DayTimeSeriesAirsFragment : Fragment() {
 
     private var dayTimeSeriesAirsAdapter = DayTimeSeriesAirsAdapter()
     lateinit var binding: FragmentDayTimeSeriesAirsBinding
 
-    private val dayTimeSeriesAirsViewModel: DayTimeSeriesAirsViewModel by viewModel()
+    private lateinit var dayTimeSeriesAirsViewModel: DayTimeSeriesAirsViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -26,6 +24,8 @@ class DayTimeSeriesAirsFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentDayTimeSeriesAirsBinding.inflate(inflater, container, false)
+
+        dayTimeSeriesAirsViewModel = getViewModel()
 
         initializeRecyclerView()
         initializeObservers()
@@ -35,7 +35,7 @@ class DayTimeSeriesAirsFragment : Fragment() {
 
     private fun initializeObservers() {
         dayTimeSeriesAirsViewModel.schedule.observe(viewLifecycleOwner) { result ->
-            when(result){
+            when (result) {
                 ResultState.Empty -> showEmptyState()
                 is ResultState.Loaded -> showLoadedState(result.data)
             }
@@ -58,10 +58,12 @@ class DayTimeSeriesAirsFragment : Fragment() {
     }
 
     fun updateSchedule(scheduleModel: ScheduleModel) {
-        dayTimeSeriesAirsViewModel.viewModelScope.launch {
-            whenCreated {
-                dayTimeSeriesAirsViewModel.updateSchedule(scheduleModel)
-            }
+        lifecycleScope.launchWhenCreated {
+            dayTimeSeriesAirsViewModel.updateSchedule(scheduleModel)
         }
+    }
+
+    companion object {
+        const val TAG = "DayTimeSeriesAirsFragment"
     }
 }

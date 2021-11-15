@@ -1,6 +1,7 @@
 package com.winterprojects.tvmazeapp.common.di
 
 import com.winterprojects.tvmazeapp.business.di.BusinessDI
+import com.winterprojects.tvmazeapp.datasource.di.DatabaseDI
 import com.winterprojects.tvmazeapp.datasource.di.DatasourceDI
 import com.winterprojects.tvmazeapp.datasource.di.RemoteDI
 import com.winterprojects.tvmazeapp.datasource.di.RetrofitDI
@@ -12,6 +13,7 @@ object KoinModules {
         RemoteDI.module,
         RetrofitDI.module,
         BusinessDI.module,
-        PresentationDI.module
+        PresentationDI.module,
+        DatabaseDI.module
     )
 }

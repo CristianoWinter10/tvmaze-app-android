@@ -1,4 +1,4 @@
-package com.winterprojects.tvmazeapp.presentation.showDetails
+package com.winterprojects.tvmazeapp.presentation.show
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -13,19 +13,30 @@ import com.winterprojects.tvmazeapp.common.helpers.OnItemClickListener
 import com.winterprojects.tvmazeapp.databinding.FragmentShowDetailsBinding
 import com.winterprojects.tvmazeapp.domain.episodes.models.EpisodeModel
 import com.winterprojects.tvmazeapp.domain.shows.models.ScheduleModel
-import com.winterprojects.tvmazeapp.presentation.common.BundleKeys.SHOW_ID_EXTRA
+import com.winterprojects.tvmazeapp.domain.shows.models.ShowModel
+import com.winterprojects.tvmazeapp.presentation.common.BundleKeys.BUNDLE_SHOW_ID_EXTRA
 import com.winterprojects.tvmazeapp.presentation.season.SeasonFragment
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.parameter.parametersOf
 
 class ShowDetailsFragment : Fragment(), OnItemClickListener<EpisodeModel> {
     private val args: ShowDetailsFragmentArgs by navArgs()
-
     private lateinit var binding: FragmentShowDetailsBinding
+
 
     private val dayTimeSeriesAirsFragment: DayTimeSeriesAirsFragment = DayTimeSeriesAirsFragment()
     private val seasonFragment: SeasonFragment = SeasonFragment()
-    private val showDetailsViewModel: ShowDetailsViewModel by viewModel { parametersOf(args.tvShow) }
+    private val showDetailsViewModel: ShowDetailsViewModel by viewModel {
+        parametersOf(
+            args.showId
+        )
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        addFragments()
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -34,30 +45,46 @@ class ShowDetailsFragment : Fragment(), OnItemClickListener<EpisodeModel> {
     ): View {
         binding = FragmentShowDetailsBinding.inflate(LayoutInflater.from(context), container, false)
 
-        childFragmentManager.commit {
-            replace(R.id.frameLayoutDayTimeSeriesAirs, dayTimeSeriesAirsFragment )
+        initializeObservers()
 
-            seasonFragment.arguments = Bundle().apply {
-                putInt(SHOW_ID_EXTRA, args.tvShow.show.id)
-            }
-
-            replace(R.id.frameLayoutSeason, seasonFragment)
-        }
+        initializeListeners()
 
         return binding.root
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+    private fun addFragments() {
+        childFragmentManager.apply {
+            if (findFragmentByTag(DayTimeSeriesAirsFragment.TAG) == null) {
+                commit {
+                    replace(
+                        R.id.frameLayoutDayTimeSeriesAirs,
+                        dayTimeSeriesAirsFragment,
+                        DayTimeSeriesAirsFragment.TAG
+                    )
+                }
+            }
 
-        initializeObservers()
+            if (findFragmentByTag(DayTimeSeriesAirsFragment.TAG) == null) {
+                seasonFragment.arguments = Bundle().apply {
+                    putInt(
+                        BUNDLE_SHOW_ID_EXTRA, args.showId
+                    )
+                }
+                commit {
+                    replace(R.id.frameLayoutSeason, seasonFragment, SeasonFragment.TAG)
 
-        initializeListeners()
+                }
+            }
+        }
     }
 
     private fun initializeListeners() {
         binding.imageBackButton.setOnClickListener {
             findNavController().popBackStack()
+        }
+
+        binding.buttonFavorite.setOnClickListener {
+            showDetailsViewModel.updateFavoriteStatus()
         }
     }
 
@@ -66,15 +93,18 @@ class ShowDetailsFragment : Fragment(), OnItemClickListener<EpisodeModel> {
     }
 
     private fun initializeObservers() {
-        showDetailsViewModel.tvShow.observe(viewLifecycleOwner) { tvShow ->
-            binding.show = tvShow.show
+        showDetailsViewModel.show.observe(viewLifecycleOwner) { show ->
+            binding.show = show
 
-            tvShow.show.scheduleModel?.let { updateDayTimeSeriesAirsFragment(it) }
+            show.scheduleModel?.let { updateDayTimeSeriesAirsFragment(show.scheduleModel) }
         }
     }
 
     override fun onItemClick(episodeModel: EpisodeModel) {
-        val action = ShowDetailsFragmentDirections.actionShowDetailsFragmentToEpisodeDetailsFragment(episodeModel)
+        val action =
+            ShowDetailsFragmentDirections.actionShowDetailsFragmentToEpisodeDetailsFragment(
+                episodeModel
+            )
         findNavController().navigate(action)
     }
 

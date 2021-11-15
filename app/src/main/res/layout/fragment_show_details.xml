@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="show"
             type="com.winterprojects.tvmazeapp.domain.shows.models.ShowModel" />
@@ -11,14 +12,12 @@
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/background">
+        android:layout_height="match_parent">
 
         <com.google.android.material.appbar.AppBarLayout
             android:id="@+id/showDetailsAppBar"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/background">
+            android:layout_height="wrap_content">
 
             <com.google.android.material.appbar.CollapsingToolbarLayout
                 android:layout_width="match_parent"
@@ -31,9 +30,9 @@
 
                     <ImageButton
                         android:id="@+id/imageBackButton"
+                        style="@style/TVmaze.BackButton"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        style="@style/TVmaze.BackButton"
                         tools:ignore="ContentDescription" />
 
                     <TextView
@@ -57,9 +56,9 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         app:constraint_referenced_ids="ratingBarShowDetailsRating, textViewShowDetailsRating"
-                        app:flow_horizontalStyle="packed"
                         app:flow_horizontalBias="0.0"
                         app:flow_horizontalGap="@dimen/default_margin_8dp"
+                        app:flow_horizontalStyle="packed"
                         app:layout_constraintBottom_toTopOf="@+id/textViewShowDetailsGenres"
                         app:layout_constraintEnd_toEndOf="@id/textViewShowDetailsTitle"
                         app:layout_constraintHorizontal_bias="0.5"
@@ -86,9 +85,9 @@
                         android:layout_marginStart="@dimen/default_margin_8dp"
                         app:handleTvShowRating="@{show.rating.average}"
                         app:layout_constraintBottom_toBottomOf="@id/ratingBarShowDetailsRating"
+                        app:layout_constraintHorizontal_bias="0.0"
                         app:layout_constraintStart_toEndOf="@id/ratingBarShowDetailsRating"
                         app:layout_constraintTop_toTopOf="@id/ratingBarShowDetailsRating"
-                        app:layout_constraintHorizontal_bias="0.0"
                         tools:text="8.2" />
 
                     <TextView
@@ -112,12 +111,30 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/default_margin_8dp"
                         app:handleTvShowAverageRuntime="@{show.averageRuntime}"
-                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintBottom_toTopOf="@id/buttonFavorite"
                         app:layout_constraintEnd_toEndOf="@id/textViewShowDetailsTitle"
                         app:layout_constraintHorizontal_bias="0.5"
                         app:layout_constraintStart_toStartOf="@id/textViewShowDetailsTitle"
                         app:layout_constraintTop_toBottomOf="@+id/textViewShowDetailsGenres"
                         tools:text="30 minutes" />
+
+                    <Button
+                        android:id="@+id/buttonFavorite"
+                        style="@style/Widget.MaterialComponents.Button.OutlinedButton.Icon"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        app:handleTvShowFavorite="@{show.favorite}"
+                        app:iconSize="24dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="@id/textViewShowDetailsAverageRuntime"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="@id/textViewShowDetailsAverageRuntime"
+                        app:layout_constraintTop_toBottomOf="@+id/textViewShowDetailsAverageRuntime"
+                        tools:icon="@drawable/ic_favorite_filled"
+                        tools:iconTint="@color/color_favorite_status"
+                        tools:strokeColor="@color/honeydew_approx"
+                        tools:text="@string/favorite"
+                        tools:textColor="@color/default_text_color" />
 
                     <ImageView
                         android:id="@+id/imageViewPosterImageDetails"

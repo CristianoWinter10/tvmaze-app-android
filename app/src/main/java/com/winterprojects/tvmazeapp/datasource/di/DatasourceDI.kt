@@ -4,10 +4,7 @@ import com.winterprojects.tvmazeapp.datasource.search.SearchRemoteDatasource
 import com.winterprojects.tvmazeapp.datasource.search.SearchRemoteDatasourceImpl
 import com.winterprojects.tvmazeapp.datasource.search.SearchRepository
 import com.winterprojects.tvmazeapp.datasource.search.SearchRepositoryImpl
-import com.winterprojects.tvmazeapp.datasource.shows.ShowRemoteDatasource
-import com.winterprojects.tvmazeapp.datasource.shows.ShowRemoteDatasourceImpl
-import com.winterprojects.tvmazeapp.datasource.shows.ShowRepository
-import com.winterprojects.tvmazeapp.datasource.shows.ShowRepositoryImpl
+import com.winterprojects.tvmazeapp.datasource.shows.*
 import org.koin.dsl.module
 
 object DatasourceDI {
@@ -27,8 +24,12 @@ object DatasourceDI {
             ShowRemoteDatasourceImpl(get())
         }
 
+        single<ShowLocalDatasource> {
+            ShowLocalDatasourceImpl(get())
+        }
+
         single<ShowRepository> {
-            ShowRepositoryImpl(get())
+            ShowRepositoryImpl(get(), get())
         }
 
     }

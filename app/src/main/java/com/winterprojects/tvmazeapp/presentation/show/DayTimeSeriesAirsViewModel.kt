@@ -1,4 +1,4 @@
-package com.winterprojects.tvmazeapp.presentation.showDetails
+package com.winterprojects.tvmazeapp.presentation.show
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

@@ -19,5 +19,15 @@ data class ShowModel(
     val status: String?,
     val summary: String?,
     val weight: Int?,
-    val _embedded: EmbeddedModel?
+    val _embedded: EmbeddedModel?,
+    var isFavorite: Boolean = false
 ): Parcelable
+
+fun ShowModel.toFavoriteShowModel(): FavoriteShowModel{
+    return FavoriteShowModel(
+        this.id,
+        this.name,
+        this.summary,
+        this.image?.medium
+    )
+}

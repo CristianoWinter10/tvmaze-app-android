@@ -6,4 +6,9 @@ interface ShowRemoteDatasource {
     suspend fun fetchCastByShowId(showId: Int): ShowModel
 
     suspend fun fetchEpisodesByShowId(showId: Int): ShowModel
+
+    suspend fun fetchShows(page: Int): List<ShowModel>
+
+    suspend fun fetchShowMainInfoById(showId: Int): ShowModel
+
 }
