@@ -2,39 +2,39 @@ This project will be keep improving...
 
 # TVmaze Android Application
 
-An  Mobile Application Version that consumes TVmaze API 
+A  Mobile Application Version that consumes TVmaze API 
 
-## Instalation and how to run
+## Installation and how to run
 
 Android Studio 4.+ 
 The SDK target used to compile the Application is the version 31
 
 ## Arquitetura MVVM + Clean Architecture
 
-The application uses MVVM Archtecture in order to provide a better communication between the layers of View, State and Data.
+The application uses MVVM Architecture in order to provide a better communication between the layers of View, State and Data.
 
-Also was applied the clea architecture providing a better separation of Views, Business Rules, Datasources, it provides us a lot of benefits, as maintainability, unit tests, a better way to apply SOLID Principals and so much more.
+Also was applied the clean architecture providing a better separation of Views, Business Rules, Datasources, it provides us a lot of benefits, as maintainability, unit tests, a better way to apply SOLID Principals and so much more.
 
-## Packages project strutucture
+## Packages project structure
 
-The project uses uses the following packages structure:
+The project uses the following packages structure:
 
 - ### Business
-  In this package are the UseCases, these classes provide us the business logical and also are responsable to communicate with the repositories
+  In this package are the UseCases, these classes provide us the business logic and also are responsible to communicate with the repositories
   
 - ### Common
-  In this package are the some Helper Classes that are common the packages
+  In this package are some of the Helper Classes that are common between the packages
 
 - ### Datasource
-  In this package are all repositories classes and its dependencies, here are the layers for local datasource and remote datasoure as well
+  In this package are all repositories classes and its dependencies, here are the layers for local datasource and remote datasource as well
 
 - ### Domain
   In this package are the Models, Dtos and Entities classes
 
 - ### Presentation
-  This package contains all classes that represent the view, this package contains Acvities, Fragments, ViewModels
+  This package contains all classes that represent the view, this package contains Activities, Fragments, ViewModels
 
-* Each package contains internal packages in order to separade by business content
+* Each package contains internal packages in order to separate by business content
 
 ## Libraries
 
